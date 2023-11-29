@@ -5,7 +5,6 @@ header {
     background-color: var(--clrMenu);
     color: var(--clrHeaderFont);
     font-family: poppinsRegular, sans-serif;
-    
 }
 
 header>* {

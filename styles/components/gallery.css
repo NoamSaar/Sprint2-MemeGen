@@ -1,0 +1,29 @@
+
+.gallery-section > * {
+    padding: 20px;
+}
+
+.gallery-section .images {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: center;
+    justify-items: center;
+    grid-auto-flow: dense;
+}
+
+.gallery-section img {
+    width: 100%;
+
+    border-radius: 15px;
+    padding: 10px;
+}
+
+@media (max-width: 680px) {
+    .gallery-section .images {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .gallery-section img {
+        width: 250px;
+        height: 250px;
+    }
+}
