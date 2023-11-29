@@ -1,3 +1,7 @@
+.gallery-section {
+    display: none;
+}
+
 
 .gallery-section > * {
     padding: 20px;
