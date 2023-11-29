@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>MemeGen</title>
+</head>
+
+<body onload1="onInit()">
+    <header>
+        <div class="logo">MinGen</div>
+
+        <nav class="main-nav">
+            <ul class="main-nav-list">
+                <li><a class="main-nav-item" href="#">Galery</a></li>
+                <li><a class="main-nav-item" href="#">Saved Memes</a></li>
+                <li><a class="main-nav-item" href="#">About</a></li>
+            </ul>
+            <button class="btn-toggle-menu" onclick1="onToggleMenu(this)">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-section">
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="Search...">
+
+                <div class="image-filter">
+                    <article>funny</article>
+                    <article>animal</article>
+                    <article>child</article>
+                </div>
+
+                <button class="btn-filter-options">more</button>
+            </div>
+
+            <div class="images">
+                <img src="img/1.jpg" alt="">
+                <img src="img/2.jpg" alt="">
+            </div>
+        </section>
+
+        <section class="editor-section">
+
+            <div class="canvas-container">
+                <canvas height="400" width="400" style="background-color: wheat;"></canvas>
+            </div>
+
+            <div class="editor-container">
+                <input type="text" id="searchInput" placeholder="Text...">
+
+                <div class="line-editors">
+                    <button class="btn-move-line-up">move-up</button>
+                    <button class="btn-move-line-down">move-down</button>
+                    <button class="btn-switch-line">switch-Line</button>
+                    <button class="btn-delete-line">delete-Line</button>
+                </div>
+
+                <div class="text-editors">
+                    <button class="btn-font-size-up">font-up</button>
+                    <button class="btn-font-size-down">font-down</button>
+                    <button class="btn-text-left">text-left</button>
+                    <button class="btn-text-center">text-center</button>
+                    <button class="btn-text-right">text-right</button>
+                    <input onchange1="onSetFillColor(this.value)" type="color" value="#ffffff">
+                    <input onchange1="onSetStrokeColor(this.value)" type="color" value="#000000">
+                </div>
+
+                <div class="stickers">
+                    <article>sticker1</article>
+                    <article>sticker2</article>
+                    <article>sticker3</article>
+                </div>
+
+                <div class="actions">
+                    <button class="btn" onclick1="onUploadImg()">Share</button>
+                    <a href="#" onclick1="onDownloadCanvas(this)" download="file-name">Download</a>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="about-section">
+
+        </section>
+
+
+    </main>
+
+    <script src="js/controllers/memeController.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
