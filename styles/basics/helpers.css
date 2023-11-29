@@ -31,6 +31,14 @@
     grid-auto-flow: column;
 }
 
+.grid.justify-center {
+    justify-items: center;
+}
+
+.grid.align-center {
+    align-items: center;
+}
+
 /* LIST HELPERS */
 
 .clean-list {
