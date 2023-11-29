@@ -10,6 +10,7 @@
 }
 
 .editor-section .canvas-container canvas{
+    font-family: myImpact;
     background-color: gray;
     border-radius: 25px;
 }
@@ -19,4 +20,15 @@
     background-color: gray;
     border-radius: 25px;
     padding: 10px;
+}
+
+.editor-section .editor-container .search-input{
+    padding-inline: 20px;
+
+    font-family: poppins, sans-serif;
+    font-size: 1.5625rem;
+
+    border-radius: 50px;
+    border: none;
+    
 }

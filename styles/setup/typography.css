@@ -5,8 +5,14 @@
     src: url(../../fonts/poppins/Poppins-ExtraLight.ttf);
 }
 
-/* lato */
 @font-face {
     font-family: poppinsRegular;
     src: url(../../fonts/poppins/Poppins-Regular.ttf);
+}
+
+/* impact */
+
+@font-face {
+    font-family: myImpact;
+    src: url(../../fonts/impact/impact.ttf);
 }
