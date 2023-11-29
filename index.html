@@ -8,26 +8,26 @@
     <title>MemeGen</title>
 </head>
 
-<body onload1="onInit()">
-    <header>
+<body class="main-layout" onload1="onInit()">
+    <header class="flex space-between align-center">
         <div class="logo">MinGen</div>
 
-        <nav class="main-nav">
-            <ul class="main-nav-list">
-                <li><a class="main-nav-item" href="#">Galery</a></li>
-                <li><a class="main-nav-item" href="#">Saved Memes</a></li>
+        <nav class="main-nav flex ">
+            <ul class="main-nav-list flex clean-list">
+                <li><a class="main-nav-item" href="#">Gallery</a></li>
+                <li><a class="main-nav-item" href="#">Memes</a></li>
                 <li><a class="main-nav-item" href="#">About</a></li>
             </ul>
-            <button class="btn-toggle-menu" onclick1="onToggleMenu(this)">Menu</button>
+            <button class="btn-toggle-menu" onclick1="onToggleMenu(this)" style="display: none;">Menu</button>
         </nav>
     </header>
 
     <main>
-        <section class="gallery-section">
-            <div class="search-section">
+        <section class="gallery-section grid colums">
+            <div class="search-section flex space-evenly align-center">
                 <input type="text" id="searchInput" placeholder="Search...">
 
-                <div class="image-filter">
+                <div class="image-filter flex">
                     <article>funny</article>
                     <article>animal</article>
                     <article>child</article>
@@ -39,10 +39,18 @@
             <div class="images">
                 <img src="img/1.jpg" alt="">
                 <img src="img/2.jpg" alt="">
+                <img src="img/3.jpg" alt="">
+                <img src="img/4.jpg" alt="">
+                <img src="img/5.jpg" alt="">
+                <img src="img/6.jpg" alt="">
+                <img src="img/7.jpg" alt="">
+                <img src="img/8.jpg" alt="">
+                <img src="img/8.jpg" alt="">
+                <img src="img/9.jpg" alt="">
             </div>
         </section>
 
-        <section class="editor-section">
+        <section class="editor-section" style="display: none;">
 
             <div class="canvas-container">
                 <canvas height="400" width="400" style="background-color: wheat;"></canvas>
