@@ -4,21 +4,6 @@ let gElCanvas
 let gCtx
 let gTxtYPlacement = 50
 
-function onInit() {
-    gElCanvas = document.querySelector('canvas')
-    gCtx = gElCanvas.getContext('2d')
-
-    resizeCanvas()
-
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        renderMeme()
-    })
-
-    renderMeme()
-    renderTxtInput ()
-}
-
 function renderMeme() {
     const meme = getMeme()
     drawImage(meme.selectedImgId)

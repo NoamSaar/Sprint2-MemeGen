@@ -1,19 +1,17 @@
 // 'use strict'
 
-// let gElCanvas
-// let gCtx
+function onInit() {
+    gElCanvas = document.querySelector('canvas')
+    gCtx = gElCanvas.getContext('2d')
 
-// function onInit() {
-//     gElCanvas = document.querySelector('canvas')
-//     gCtx = gElCanvas.getContext('2d')
+    renderGallery()
+    resizeCanvas()
 
-//     resizeCanvas()
-//     window.addEventListener('resize', resizeCanvas)
-// }
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
 
-// function resizeCanvas() {
-//     const elContainer = document.querySelector('.canvas-container')
-
-//     gElCanvas.width = elContainer.clientWidth - 2
-//     gElCanvas.height = elContainer.clientHeight - 2
-// }
+    renderMeme()
+    renderTxtInput ()
+}

@@ -1,6 +1,10 @@
 'use strict'
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: [] }]
+var gImgs = [
+    { id: 1, url: 'img/1.jpg', keywords: [] },
+    { id: 2, url: 'img/2.jpg', keywords: [] },
+    { id: 3, url: 'img/3.jpg', keywords: [] },
+]
 
 var gMeme = {
     selectedImgId: 4,
@@ -16,6 +20,10 @@ var gMeme = {
 
 function getMeme() {
     return gMeme
+}
+
+function getImages() {
+    return gImgs
 }
 
 function setLineTxt(txt) {
