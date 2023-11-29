@@ -1,0 +1,17 @@
+.editor-section {
+    grid-template-columns: 1fr 2.5rem 1fr;
+    grid-template-rows: auto;
+}
+
+.editor-section .canvas-container {
+    width: 100%;
+    background-color: gray;
+    border-radius: 25px;
+}
+
+.editor-section .editor-container {
+    grid-column: 3;
+    background-color: gray;
+    border-radius: 25px;
+    padding: 10px;
+}
