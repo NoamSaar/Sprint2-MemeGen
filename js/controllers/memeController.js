@@ -63,6 +63,13 @@ function resizeCanvas() {
 
     gElCanvas.width = elContainer.clientWidth - 1
 }
+
+function onDownloadCanvas(elLink) {
+    const dataUrl = gElCanvas.toDataURL()
+    elLink.href = dataUrl
+    elLink.download = 'my-img'
+}
+
 // function onImgInput(ev) {
 //     loadImageFromInput(ev, renderImg)
 // }
