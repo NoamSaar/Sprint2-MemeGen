@@ -9,6 +9,11 @@
     border-radius: 25px;
 }
 
+.editor-section .canvas-container canvas{
+    background-color: gray;
+    border-radius: 25px;
+}
+
 .editor-section .editor-container {
     grid-column: 3;
     background-color: gray;
