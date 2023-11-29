@@ -3,8 +3,19 @@
 .main-layout {
     display: grid;
     grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: auto 1fr;
 }
 
 .main-layout > * {
     grid-column: 2;
+}
+
+input {
+    padding-inline: 20px;
+
+    font-family: poppins, sans-serif;
+    /* font-size: 1.5625rem; */
+
+    border-radius: 50px;
+    border: none;
 }
