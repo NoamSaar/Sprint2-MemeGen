@@ -1,0 +1,12 @@
+/* poppins */
+
+@font-face {
+    font-family: poppinsLight;
+    src: url(../../fonts/poppins/Poppins-ExtraLight.ttf);
+}
+
+/* lato */
+@font-face {
+    font-family: poppinsRegular;
+    src: url(../../fonts/poppins/Poppins-Regular.ttf);
+}

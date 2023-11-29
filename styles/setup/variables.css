@@ -1,0 +1,14 @@
+:root {
+    /* color */
+
+    --clrPrimary2: #b3b3b3; /* Filter bgc */
+    --clrPrimary1: #383B42; /* Gallery bgc */
+    --clrPrimaryBase: #22252C; /* Body bgc */
+
+    --clrHeaderFont: #fff;
+    --clrMenu: #5970C1;
+
+    /* layout  */
+
+    --header-height: 75px;
+}

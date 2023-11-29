@@ -1,0 +1,40 @@
+/* FLEX HELPERS */
+
+.flex {
+    display: flex;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.justify-center {
+    justify-content: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.space-evenly {
+    justify-content: space-evenly;
+}
+
+
+/* GRID HELPERS */
+
+.grid {
+    display: grid;
+}
+
+.grid.column {
+    grid-auto-flow: column;
+}
+
+/* LIST HELPERS */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
