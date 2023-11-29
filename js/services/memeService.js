@@ -3,14 +3,17 @@
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: [] }]
 
 var gMeme = {
-    selectedImgId: 1,
+    selectedImgId: 4,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel'
-            ,
+            txt: `How's Sprint 2 going?`,
             size: 20,
             color: 'red'
         }
     ]
+}
+
+function getMeme() {
+    return gMeme
 }

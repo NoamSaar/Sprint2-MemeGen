@@ -11,36 +11,39 @@ function onInit() {
     resizeCanvas()
 
     window.addEventListener('resize', () => {
-        resizeCanvas
-        renderMeme
+        resizeCanvas()
+        renderMeme()
     })
 }
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
 
-    gElCanvas.width = elContainer.clientWidth - 2
+    gElCanvas.width = elContainer.clientWidth - 1
 }
 
 function renderMeme() {
-    drawImage()
-    drawText()
+    const meme = getMeme()
+    drawImage(meme.selectedImgId)
+    meme.lines.forEach(line => {
+        drawText(line.txt, 40, gElCanvas.width / 2, 50)
+    })
 }
 
-function drawImage() {
+function drawImage(number) {
     const elImg = new Image()
 
-    elImg.src = './img/4.jpg'
+    elImg.src = `./img/${number}.jpg`
     elImg.onload = () => {
-        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        coverCanvasWithImg(elImg)
     }
 }
 
-function drawText(text, x, y) {
+function drawText(text, size, x, y) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
-    gCtx.font = '40px Arial'
+    gCtx.font = `${size}px myImpact`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
@@ -54,6 +57,8 @@ function onSelectImg(elImg) {
 function coverCanvasWithImg(elImg) {
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+
+    renderMeme()
 }
 
 function renderImg(img) {
@@ -70,7 +75,7 @@ function onChangeToSection(section) {
     }
 
     const elCurrSection = document.querySelector(`.${section}-section`)
-    
+
     if (elCurrSection.style.display === 'grid') return
 
     elCurrSection.style.display = 'grid' 
