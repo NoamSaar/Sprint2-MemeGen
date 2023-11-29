@@ -16,6 +16,10 @@ header .logo {
     margin-inline-start: 50px;
 }
 
+header .main-nav-list {
+    display: flex;
+}
+
 header li {
     margin: 5px;
     border-radius: 50px;
@@ -33,4 +37,105 @@ header a {
 header a:hover {
     background-color: #fefefe;
     color: var(--clrHeaderBtn);
+}
+
+header button {
+    display: none;
+    cursor: pointer;
+}
+
+header .btn-toggle-menu .hamburger-lines {
+    height: 26px;
+    width: 32px;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+}
+
+header .hamburger-lines .line {
+    height: 4px;
+    width: 100%;
+    border-radius: 50px;
+    background-color: var(--clrHeaderBtn);
+    transition: 0.4s;
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line1 {
+    rotate: -45deg;
+    transform-origin: right top;
+    padding-right: 5px;
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line2 {
+    scale: 0;
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line3 {
+    rotate: 45deg;
+    transform-origin: right bottom;
+}
+
+@media (max-width: 680px) {
+    header {
+        border-radius: 0;
+        margin: 0;
+        grid-column: 1 / -1 !important;
+    }
+    
+    header .logo {
+        padding-block: 25px;
+        font-weight: 500;
+        font-size: 2rem;
+    }
+
+    header button {
+        display: block;
+        padding: 15px;
+        margin-inline-end: 20px;
+        border-radius: 50%;
+        border: none;
+    }
+
+    header .main-nav {
+        display: grid;
+        position: fixed;
+        top: 99px;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        grid-template-rows: 0fr;
+        overflow: hidden;
+        transition: grid-template-rows 1s;
+        align-items: end;
+    }
+
+
+    header .main-nav ul {
+        display: grid;
+        min-height: 0;
+        background-color: var(--clrPrimary2);
+    }
+
+    header .main-nav li {
+        display: flex;
+        justify-self: stretch;
+        text-align: center;
+        border: 0;
+    }
+
+    header .main-nav a {
+        width: 100%;
+        padding-block: 25px;
+        border-radius: 0;
+        border-block-end: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    body.menu-open .main-nav {
+        grid-template-rows: 1fr;
+    }
+
+
 }

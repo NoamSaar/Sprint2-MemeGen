@@ -13,15 +13,22 @@
         <div class="logo">MemeGen</div>
 
         <nav class="main-nav flex ">
-            <ul class="main-nav-list flex clean-list">
+            <ul class="main-nav-list clean-list">
                 <li onclick="onChangeToSection(this.getAttribute('value'))" value="gallery"><a class="main-nav-item"
                         href="#">Gallery</a></li>
                 <li onclick="onChangeToSection(this.getAttribute('value'))" value="editor"><a class="main-nav-item"
                         href="#">Memes</a></li>
                 <li><a class="main-nav-item" href="#">About</a></li>
             </ul>
-            <button class="btn-toggle-menu" onclick1="onToggleMenu(this)" style="display: none;">Menu</button>
+
         </nav>
+        <button class="btn-toggle-menu" onclick="toggleMenu()">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+        </button>
     </header>
 
     <main>

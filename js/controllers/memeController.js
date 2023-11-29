@@ -58,23 +58,6 @@ function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width - 1, gElCanvas.height - 1)
 }
 
-function onChangeToSection(section) {
-    var elPrevSection
-
-    if (section === 'gallery') {
-        elPrevSection = document.querySelector(`.editor-section`)
-    } else {
-        elPrevSection = document.querySelector(`.gallery-section`)
-    }
-
-    const elCurrSection = document.querySelector(`.${section}-section`)
-
-    if (elCurrSection.style.display === 'grid') return
-
-    elCurrSection.style.display = 'grid' 
-    elPrevSection.style.display = 'none'
-}
-
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
 

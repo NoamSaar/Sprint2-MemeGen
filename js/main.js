@@ -18,3 +18,26 @@ function onInit() {
     renderMeme()
     renderTxtInput ()
 }
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open')
+}
+
+function onChangeToSection(section) {
+    var elPrevSection
+
+    if (section === 'gallery') {
+        elPrevSection = document.querySelector(`.editor-section`)
+    } else {
+        elPrevSection = document.querySelector(`.gallery-section`)
+    }
+
+    const elCurrSection = document.querySelector(`.${section}-section`)
+
+    if (elCurrSection.style.display === 'grid') return
+
+    elCurrSection.style.display = 'grid' 
+    elPrevSection.style.display = 'none'
+
+    if (document.body.classList.contains('menu-open')) document.body.classList.remove('menu-open')
+}

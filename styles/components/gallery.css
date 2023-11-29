@@ -49,16 +49,21 @@
     align-items: center;
     justify-items: center;
     grid-auto-flow: dense;
+
+    gap: 10px
 }
 
 .gallery-section img {
     width: 100%;
 
     border-radius: 15px;
-    padding: 10px;
 }
 
 @media (max-width: 680px) {
+    .gallery-section {
+        margin-block: 15px;
+    }
+
     .gallery-section .images-container {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
