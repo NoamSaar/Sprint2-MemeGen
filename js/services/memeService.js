@@ -17,3 +17,23 @@ var gMeme = {
 function getMeme() {
     return gMeme
 }
+
+function setLineTxt(txt) {
+    _updateMeme(txt)
+}
+
+function _updateMeme(txt) {
+    const { selectedLineIdx, lines } = gMeme
+
+    if (lines.length > 0 && selectedLineIdx >= 0 && selectedLineIdx < lines.length) {
+        lines[selectedLineIdx].txt = txt
+    } else {
+        gMeme.lines.push({
+            txt,
+            size: 40,
+            color: 'black'
+        })
+    }
+
+    return gMeme;
+}

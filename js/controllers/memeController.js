@@ -2,38 +2,48 @@
 
 let gElCanvas
 let gCtx
+let gTxtYPlacement = 50
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    renderMeme()
     resizeCanvas()
 
     window.addEventListener('resize', () => {
         resizeCanvas()
         renderMeme()
     })
-}
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-
-    gElCanvas.width = elContainer.clientWidth - 1
+    renderMeme()
+    renderTxtInput ()
 }
 
 function renderMeme() {
     const meme = getMeme()
     drawImage(meme.selectedImgId)
     meme.lines.forEach(line => {
-        drawText(line.txt, 40, gElCanvas.width / 2, 50)
+        drawText(line.txt, 40, gElCanvas.width / 2, gTxtYPlacement)
     })
 }
 
-function drawImage(number) {
+function renderTxtInput () {
+    const elTxtInput = document.querySelector('input[type="text"]')
+
+    const { lines } = getMeme()
+    const currTxt = lines[0].txt
+
+    elTxtInput.value = currTxt
+}
+
+function onChangeInput(txt) {
+    setLineTxt(txt)
+}
+
+function drawImage(imgId) {
     const elImg = new Image()
 
-    elImg.src = `./img/${number}.jpg`
+    elImg.src = `./img/${imgId}.jpg`
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
     }
@@ -82,6 +92,11 @@ function onChangeToSection(section) {
     elPrevSection.style.display = 'none'
 }
 
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+
+    gElCanvas.width = elContainer.clientWidth - 1
+}
 // function onImgInput(ev) {
 //     loadImageFromInput(ev, renderImg)
 // }
