@@ -12,8 +12,9 @@ var gMeme = {
     lines: [
         {
             txt: `How's Sprint 2 going?`,
-            size: 20,
-            color: 'red'
+            size: 40,
+            color: 'white',
+            stroke: 'black',
         }
     ]
 }
@@ -43,5 +44,9 @@ function _updateMeme(txt) {
         })
     }
 
-    return gMeme;
+    return gMeme
+}
+
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId
 }

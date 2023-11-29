@@ -1,7 +1,5 @@
 'use strict'
 
-let gElCanvas
-let gCtx
 let gTxtYPlacement = 50
 
 function renderMeme() {
