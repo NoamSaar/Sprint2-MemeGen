@@ -7,6 +7,7 @@
 .editor-section .canvas-container {
     grid-row: 1;
 
+    cursor: grab;
     width: 100%;
     background-color: gray;
     border-radius: 25px;
@@ -94,6 +95,8 @@
 .editor-container .text-editors-container {
     background-color: RGBA(25, 165, 159, 1);
     padding-inline: 10px;
+    display: grid;
+    align-content: center;
 }
 
 .editor-container .text-editors {

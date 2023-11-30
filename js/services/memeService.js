@@ -41,7 +41,7 @@ function createMeme(pos) {
                 size: 40,
                 color: 'white',
                 stroke: 'black',
-                position: { posX, posY },
+                position: { x: posX, y: posY },
             }
         ]
     }

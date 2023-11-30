@@ -2,13 +2,19 @@
 
 let gElCanvas
 let gCtx
+
 let gCurrDisplay = 'editor'
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
+    posX = gElCanvas.width / 2
+    posY = 50
+
     addListeners()
+
+    createMeme( {posX, posY} ) 
 
     renderGallery()
     resizeCanvas()
