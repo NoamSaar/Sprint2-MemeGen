@@ -1,5 +1,11 @@
 'use strict'
 
+let gSelectedLineIdx = 0
+
+let gFillColor = 'white'
+let gStrokeColor = 'black'
+let gFontSize = 40
+
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: [] },
     { id: 2, url: 'img/2.jpg', keywords: [] },
@@ -42,26 +48,71 @@ function getImages() {
     return gImgs
 }
 
-function setLineTxt(txt) {
-    _updateMeme(txt)
+function getFillColor() {
+    return gFillColor
 }
 
-function _updateMeme(txt) {
-    const { selectedLineIdx, lines } = gMeme
+function getStrokeColor() {
+    return gStrokeColor
+}
 
-    if (lines.length > 0 && selectedLineIdx >= 0 && selectedLineIdx < lines.length) {
-        lines[selectedLineIdx].txt = txt
+function getSelectedLineIdx() {
+    return gSelectedLineIdx
+}
+
+function setLineTxt(txt, lineIdx) {
+    _updateMeme(txt, lineIdx)
+}
+
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId
+}
+
+function setFillColor(color, lineIdx) {
+    gFillColor = color
+    gMeme.lines[lineIdx].color = color
+}
+
+function setStrokeColor(color, lineIdx) {
+    gStrokeColor = color
+    gMeme.lines[lineIdx].stroke = color
+}
+
+function changeFontSize(diff, lineIdx) {
+
+}
+
+function addNewLine() {
+    const defaultText = 'New Text'
+    const defaultSize = 40
+    const defaultColor = 'white'
+    const defaultStroke = 'black'
+
+    // Add a new line to the meme lines array
+    gMeme.lines.push({
+        txt: defaultText,
+        size: defaultSize,
+        color: defaultColor,
+        stroke: defaultStroke, 
+    })
+
+    gSelectedLineIdx = gMeme.lines.length - 1
+
+}
+
+function _updateMeme(txt, lineIdx) {
+    const { lines } = gMeme
+
+    if (lines.length > 0 && lineIdx >= 0 && lineIdx < lines.length) {
+        lines[lineIdx].txt = txt
     } else {
         gMeme.lines.push({
             txt,
             size: 40,
             color: 'black'
         })
+        gSelectedLineIdx = gMeme.lines.length - 1;
     }
 
     return gMeme
-}
-
-function setImg(imgId) {
-    gMeme.selectedImgId = imgId
 }
