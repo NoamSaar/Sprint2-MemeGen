@@ -108,6 +108,18 @@ function switchLine() {
     gSelectedLineIdx = (gSelectedLineIdx + 1) % lines.length
 }
 
+function deleteLine() {
+    const { lines } = gMeme
+
+    if (lines.length <= 1) return
+
+    lines.splice(gSelectedLineIdx, 1)
+
+    if (lines.length > 0) {
+        gSelectedLineIdx = (gSelectedLineIdx === 0) ? 0 : (gSelectedLineIdx - 1) % lines.length
+    }
+}
+
 function _updateMeme(txt, lineIdx) {
     const { lines } = gMeme
 

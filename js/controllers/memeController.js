@@ -56,6 +56,12 @@ function onSwitchLine() {
     renderTxtInput()
 }
 
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+    renderTxtInput()
+}
+
 function onChangeInput(txt) {
     setLineTxt(txt, getSelectedLineIdx())
     renderMeme()
