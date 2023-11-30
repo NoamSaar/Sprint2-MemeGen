@@ -1,37 +1,33 @@
 'use strict'
 
 
-function renderMeme() {
+function renderMeme(color = 'white') {
     const meme = getMeme()
     drawImage(meme.selectedImgId)
 
-    const lineHeight = 20
-    const canvasCenter = gElCanvas.height / 2
-    const totalLines = meme.lines.length
-
     meme.lines.forEach((line, idx) => {
-        let newYPlacement;
+        let newYPlacement
 
         if (idx === 0) {
             newYPlacement = 50
         } else if (idx === 1) {
-            newYPlacement = gElCanvas.height - 50;
+            newYPlacement = gElCanvas.height - 50
         } else {
-            newYPlacement = gElCanvas.height / 2;
+            newYPlacement = gElCanvas.height / 2
         }
 
-        drawText(line.txt, line.size, gElCanvas.width / 2, newYPlacement);
-        if (idx === gSelectedLineIdx) {
+        drawText(line.txt, line.size, gElCanvas.width / 2, newYPlacement)
+        if (idx === getSelectedLineIdx()) {
             // You can add a visual indication for the selected line, for example, a border
-            gCtx.strokeStyle = 'white'
+            gCtx.strokeStyle = color
             gCtx.strokeRect(
                 gElCanvas.width / 2 - gCtx.measureText(line.txt).width / 2,
                 newYPlacement - line.size / 2,
                 gCtx.measureText(line.txt).width,
                 line.size
-            );
+            )
         }
-    });
+    })
 }
 
 function renderTxtInput() {
@@ -45,7 +41,21 @@ function renderTxtInput() {
 }
 
 function onAddNewLine() {
-    addNewLine()
+    const meme = getMeme()
+    const currLineIdx = meme.lines.length
+
+    var newYPlacement 
+    var newXPlacement = gElCanvas.width / 2
+
+    if (currLineIdx === 0) {
+        newYPlacement = 50
+    } else if (currLineIdx === 1) {
+        newYPlacement = gElCanvas.height - 50
+    } else {
+        newYPlacement = gElCanvas.height / 2
+    }
+
+    addNewLine( { x: newXPlacement, y: newYPlacement})
     renderMeme()
     renderTxtInput()
 }
@@ -133,11 +143,21 @@ function resizeCanvas() {
     gElCanvas.width = elContainer.clientWidth - 1
 }
 
+
 function onDownloadCanvas(elLink) {
+    const originalStrokeStyle = gCtx.strokeStyle
+    gCtx.strokeStyle = 'transparent'
+    renderMeme('transparent')
+    
     const dataUrl = gElCanvas.toDataURL()
+
+    gCtx.strokeStyle = originalStrokeStyle
+    renderMeme(originalStrokeStyle)
+
     elLink.href = dataUrl
     elLink.download = 'my-img'
 }
+
 
 function onOpenColorPicker(type) {
     const colorPicker = document.createElement('input');

@@ -28,17 +28,27 @@ var gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: [] },
 ]
 
-var gMeme = {
-    selectedImgId: 4,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: `How's Sprint 2 going?`,
-            size: 40,
-            color: 'white',
-            stroke: 'black',
-        }
-    ]
+let gMeme 
+
+function createMeme(pos) {
+    const { posX, posY } = pos
+    return gMeme = {
+        selectedImgId: 4,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: `How's Sprint 2 going?`,
+                size: 40,
+                color: 'white',
+                stroke: 'black',
+                position: { posX, posY },
+            }
+        ]
+    }
+}
+
+function setSelectedLine(lineIdx) {
+    gSelectedLineIdx = lineIdx
 }
 
 function getMeme() {
@@ -87,19 +97,24 @@ function changeFontSize(diff, lineIdx) {
 
 }
 
-function addNewLine() {
+function addNewLine(pos) {
+    var { x, y } = pos
+
     const defaultText = 'New Text'
     const defaultSize = 40
     const defaultColor = 'white'
     const defaultStroke = 'black'
 
     // Add a new line to the meme lines array
-    gMeme.lines.push({
+    const newLine = {
         txt: defaultText,
         size: defaultSize,
         color: defaultColor,
         stroke: defaultStroke,
-    })
+        position: { x, y },
+    }
+    
+    gMeme.lines.push(newLine)
 
     gSelectedLineIdx = gMeme.lines.length - 1
 
