@@ -93,7 +93,7 @@ function addNewLine() {
         txt: defaultText,
         size: defaultSize,
         color: defaultColor,
-        stroke: defaultStroke, 
+        stroke: defaultStroke,
     })
 
     gSelectedLineIdx = gMeme.lines.length - 1
@@ -118,6 +118,17 @@ function deleteLine() {
     if (lines.length > 0) {
         gSelectedLineIdx = (gSelectedLineIdx === 0) ? 0 : (gSelectedLineIdx - 1) % lines.length
     }
+}
+
+function changeFontSize(diff) {
+    console.log('diff:', diff)
+    const { lines } = gMeme
+
+    if (lines.length === 0) return
+
+    const selectedLine = lines[gSelectedLineIdx]
+
+    selectedLine.size = Math.min(100, Math.max(20, selectedLine.size + diff));
 }
 
 function _updateMeme(txt, lineIdx) {

@@ -62,6 +62,11 @@ function onDeleteLine() {
     renderTxtInput()
 }
 
+function onChangeFontSize(diff) {
+    changeFontSize(diff)
+    renderMeme()
+}
+
 function onChangeInput(txt) {
     setLineTxt(txt, getSelectedLineIdx())
     renderMeme()
