@@ -5,6 +5,7 @@ let gSelectedLineIdx = 0
 let gFillColor = 'white'
 let gStrokeColor = 'black'
 let gFontSize = 40
+let gFontFamily = 'myImpact'
 
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: [] },
@@ -54,6 +55,10 @@ function getFillColor() {
 
 function getStrokeColor() {
     return gStrokeColor
+}
+
+function getFontFamily() {
+    return gFontFamily
 }
 
 function getSelectedLineIdx() {
@@ -130,6 +135,19 @@ function changeFontSize(diff) {
 
     selectedLine.size = Math.min(100, Math.max(20, selectedLine.size + diff));
 }
+
+function changeFontFamily(fontFamily) {
+    const { lines } = gMeme
+
+    if (lines.length === 0) return
+
+    const selectedLine = lines[gSelectedLineIdx]
+
+    selectedLine.fontFamily = (fontFamily === 'myImpact') ? 'myImpact' : fontFamily
+    gFontFamily = fontFamily
+}
+
+function setTextAlignment(align) {
 
 function _updateMeme(txt, lineIdx) {
     const { lines } = gMeme

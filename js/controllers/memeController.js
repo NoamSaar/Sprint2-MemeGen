@@ -67,6 +67,12 @@ function onChangeFontSize(diff) {
     renderMeme()
 }
 
+function onChangeFontFamily(fontFamily) {
+    changeFontFamily(fontFamily)
+    renderMeme()
+}
+
+
 function onChangeInput(txt) {
     setLineTxt(txt, getSelectedLineIdx())
     renderMeme()
@@ -85,7 +91,7 @@ function drawText(text, size, x, y) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = getStrokeColor()
     gCtx.fillStyle = getFillColor()
-    gCtx.font = `${size}px myImpact`
+    gCtx.font = `${size}px ${getFontFamily()}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)

@@ -35,7 +35,7 @@
 
         <section class="editor-section">
             <div class="canvas-container">
-                <canvas height="400" width="400" style="background-color: wheat;"></canvas>
+                <canvas height="400" width="400"></canvas>
             </div>
             
             <div class="editor-container grid">
@@ -44,18 +44,25 @@
                 <div class="line-editors">
                     <button class="btn-move-line-up">move-up</button>
                     <button class="btn-move-line-down">move-down</button>
-                    <button class="btn-switch-line">switch-Line</button>
-                    <button class="btn-delete-line">delete-Line</button>
+                    <button onclick="onAddNewLine()" class="btn-add-line">add-Line</button>
+                    <button onclick="onSwitchLine()" class="btn-switch-line">switch-Line</button>
+                    <button onclick="onDeleteLine()" class="btn-delete-line">delete-Line</button>
                 </div>
 
                 <div class="text-editors">
-                    <button class="btn-font-size-up">font-up</button>
-                    <button class="btn-font-size-down">font-down</button>
-                    <button class="btn-text-left">text-left</button>
-                    <button class="btn-text-center">text-center</button>
-                    <button class="btn-text-right">text-right</button>
-                    <input onchange1="onSetFillColor(this.value)" type="color" value="#ffffff">
-                    <input onchange1="onSetStrokeColor(this.value)" type="color" value="#000000">
+                    <button onclick="onChangeFontSize(1)" class="btn-font-size-up">font-up</button>
+                    <button onclick="onChangeFontSize(-1)" class="btn-font-size-down">font-down</button>
+                    <button onclick="setTextAlignment('left')" class="btn-text-left">Text Left</button>
+                    <button onclick="setTextAlignment('center')" class="btn-text-center">Text Center</button>
+                    <button onclick="setTextAlignment('right')" class="btn-text-right">Text Right</button>
+                    <select onchange="onChangeFontFamily(this.value)" class="font-family-select">
+                        <option value="myImpact">IMPACT</option>
+                        <option value="Arial">ARIAL</option>
+                        <option value="Times New Roman">TIMES NEW ROMAMN</option>
+                        <option value="Courier New">COURIER NEW</option>
+                    </select>
+                    <input onchange="onSetFillColor(this.value)" type="color" value="#ffffff">
+                    <input onchange="onSetStrokeColor(this.value)" type="color" value="#000000">
                 </div>
 
                 <div class="stickers">
@@ -96,6 +103,7 @@
         </section>
     </main>
 
+    <script src="js/services/eventService.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/memeController.js"></script>
     <script src="js/controllers/galleryController.js"></script>
