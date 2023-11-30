@@ -10,6 +10,7 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
 
     posX = gElCanvas.width / 2
+    console.log('posX:', posX)
     posY = 50
 
     addListeners()

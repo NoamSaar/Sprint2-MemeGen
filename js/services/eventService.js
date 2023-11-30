@@ -45,10 +45,11 @@ function findClickedLine(clickedPos) {
 
 
 function onDown(ev) {
-    const clickedPos = getEvPos(ev);
+    const clickedPos = getEvPos(ev)
 
     // Check if any line is clicked
-    const clickedLineIdx = findClickedLine(clickedPos);
+    const clickedLineIdx = findClickedLine(clickedPos)
+    console.log('clickedLineIdx:', clickedLineIdx)
 
     if (clickedLineIdx !== -1) {
         setLineDrag(true, clickedLineIdx);

@@ -6,23 +6,23 @@ function renderMeme(color = 'white') {
     drawImage(meme.selectedImgId)
 
     meme.lines.forEach((line, idx) => {
-        let newYPlacement
+        // let newYPlacement
 
-        if (idx === 0) {
-            newYPlacement = 50
-        } else if (idx === 1) {
-            newYPlacement = gElCanvas.height - 50
-        } else {
-            newYPlacement = gElCanvas.height / 2
-        }
+        // if (idx === 0) {
+        //     newYPlacement = 50
+        // } else if (idx === 1) {
+        //     newYPlacement = gElCanvas.height - 50
+        // } else {
+        //     newYPlacement = gElCanvas.height / 2
+        // }
 
-        drawText(line.txt, line.size, gElCanvas.width / 2, newYPlacement)
+        drawText(line.txt, line.size, line.position.x, line.position.y)
         if (idx === getSelectedLineIdx()) {
             // You can add a visual indication for the selected line, for example, a border
             gCtx.strokeStyle = color
             gCtx.strokeRect(
-                gElCanvas.width / 2 - gCtx.measureText(line.txt).width / 2,
-                newYPlacement - line.size / 2,
+                line.position.x - gCtx.measureText(line.txt).width / 2,
+                line.position.y - line.size / 2,
                 gCtx.measureText(line.txt).width,
                 line.size
             )
