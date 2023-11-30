@@ -7,6 +7,8 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
+    addListeners()
+
     renderGallery()
     resizeCanvas()
 
@@ -41,3 +43,4 @@ function onChangeToSection(section) {
 
     if (document.body.classList.contains('menu-open')) document.body.classList.remove('menu-open')
 }
+

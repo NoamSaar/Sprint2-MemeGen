@@ -31,19 +31,26 @@
 
 .editor-section .editor-container {
     grid-column: 4;
-    background-color: gray;
+    background-color: var(--clrPrimary1);
     border-radius: 25px;
-    padding: 10px;
+    padding: 15px 30px;
 }
 
 .editor-section .editor-container .search-input {
-    padding-inline: 20px;
+    padding-block: .35em;
+    text-align: center;
 
-    font-family: poppins, sans-serif;
-    font-size: 1.5625rem;
+    font-family: poppinsRegular, sans-serif;
+    font-size: 1.2rem;
 
     border-radius: 50px;
     border: none;
+    background-color: RGBA(235, 238, 243);
+    box-shadow: #d8d8d8 0px 4px 0px 0px, inset #fff 0px 4px 0px 0px;
+}
+
+.editor-container input[type="color"] {
+    display: none;
 }
 
 .editor-section .line-editors,
@@ -53,7 +60,65 @@
     margin-top: 10px; 
 }
 
-@media (max-width: 980px) {
+.editor-container img {
+    scale: .8;
+}
+
+.editor-container .line-editors {
+    justify-content: center;
+    gap: 16px;
+    margin-block-end: 10px;
+}
+
+.editor-container .btn-edit{
+    width: 50px; 
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--clrEditorBtn);
+    box-shadow: 0 3px 0 0 rgb(97, 97, 97), inset #fff 0 3px 0 0 ;
+}
+
+.editor-container .btn-edit.btn-switch-line{
+    background-color: var(--clrBtnLineSwitch);
+    box-shadow: 0 3px 0 0 #4f7a82, inset #999d9d86 -1px 4px 0 0 ;
+}
+
+.editor-container .btn-edit.btn-add-line{
+    background-color: var(--clrBtnLineAdd);
+    box-shadow: 0 3px 0 0 #2a704b, inset #a5c4b478 -1px 4px 0 0 ;
+}
+
+.editor-container .btn-edit.btn-delete-line{
+    background-color: var(--clrBtnLineDelete);
+    box-shadow: 0 3px 0 0 #792323, inset #8674746d -1px 4px 0 0 ;;
+}
+
+.editor-container .text-editors-container {
+    background-color: RGBA(25, 165, 159, 1);
+    padding-inline: 10px;
+    border-radius: 10px;
+}
+
+.editor-container .text-editors {
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    justify-items: center;
+    gap: 15px;
+}
+
+.editor-container .text-editors select {
+    grid-column: 1 / 4;
+    align-self: stretch;
+    justify-self: stretch;
+    padding-inline: 18px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+}
+
+/* .editor-container .line-editors . */
+
+@media (max-width: 920px) {
     .editor-section {
         grid-template-columns: 150px 1fr 150px;
         grid-template-rows: 1fr 2.5rem 1fr;
@@ -75,6 +140,10 @@
 
 @media (max-width: 680px) {
     .editor-section {
-        grid-template-columns: 60px 1fr 60px;
+        grid-template-columns: 
+            /* minmax(20px, 100px)
+            1fr
+            minmax(20px, 100px) */
+        100px 1fr 60px;
     }
 }

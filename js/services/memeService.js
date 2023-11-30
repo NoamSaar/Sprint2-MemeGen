@@ -126,7 +126,6 @@ function deleteLine() {
 }
 
 function changeFontSize(diff) {
-    console.log('diff:', diff)
     const { lines } = gMeme
 
     if (lines.length === 0) return
@@ -148,6 +147,13 @@ function changeFontFamily(fontFamily) {
 }
 
 function setTextAlignment(align) {
+    const { lines } = gMeme
+
+    if (lines.length === 0) return
+
+    const selectedLine = lines[gSelectedLineIdx]
+    selectedLine.textAlign = align
+}
 
 function _updateMeme(txt, lineIdx) {
     const { lines } = gMeme

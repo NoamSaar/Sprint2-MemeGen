@@ -72,6 +72,10 @@ function onChangeFontFamily(fontFamily) {
     renderMeme()
 }
 
+function onSetTextAlignment(diff) {
+    setTextAlignment(diff)
+    renderMeme()
+}
 
 function onChangeInput(txt) {
     setLineTxt(txt, getSelectedLineIdx())
@@ -135,19 +139,21 @@ function onDownloadCanvas(elLink) {
     elLink.download = 'my-img'
 }
 
-// function onImgInput(ev) {
-//     loadImageFromInput(ev, renderImg)
-// }
+function onOpenColorPicker(type) {
+    const colorPicker = document.createElement('input');
+    colorPicker.type = 'color'
 
-// function loadImageFromInput(ev, onImageReady) {
-//     const reader = new FileReader()
-//     reader.onload = function (event) {
-//         let img = new Image() 
-//         img.src = event.target.result 
-//         img.onload = () => {
-//             onImageReady(img)
-//             onSelectImg(img)
-//         }
-//     }
-//     reader.readAsDataURL(ev.target.files[0]) 
-// }
+    colorPicker.addEventListener('input', function() {
+        setColor(colorPicker.value, type)
+    })
+
+    colorPicker.click()
+}
+
+function setColor(color, type) {
+    if (type === 'fill') {
+        onSetFillColor(color)
+    } else if (type === 'stroke') {
+        onSetStrokeColor(color)
+    }
+}

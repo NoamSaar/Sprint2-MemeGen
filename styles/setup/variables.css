@@ -5,7 +5,11 @@
     --clrPrimary1: #383B42; /* Gallery bgc */
     --clrPrimaryBase: #22252C; /* Body bgc */
 
-    --clrSecondary: linear-gradient(90deg, rgba(15,155,180,1) 0%, rgba(48,187,114,1) 70%);    color: var(--clrHeaderFont);
+    --clrEditorBtn: #ebeef3;
+    --clrBtnLineSwitch: #0f9bb4;
+    --clrBtnLineAdd: #30bb72;
+    --clrBtnLineDelete: #bb3d3d;
+    --clrSecondary: linear-gradient(90deg, rgba(15,155,180,1) 0%, rgba(48,187,114,1) 70%); 
     --clrHeaderFont: #fff;
     --clrInputFont: #fefefe;
     --clrHeaderBtn: #21AC91;
