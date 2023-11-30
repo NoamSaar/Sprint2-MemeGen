@@ -44,40 +44,40 @@
                 <div class="line-editors grid column align-center">
                     <!-- <button class="btn-move-line-up">move-up</button>
                     <button class="btn-move-line-down">move-down</button> -->
-                    <button onclick="onSwitchLine()" class="btn-edit btn-switch-line flex justify-center align-center">
+                    <button onclick="onSwitchLine()" class="btn-edit border-redius btn-switch-line flex justify-center align-center">
                         <img src="./SVG/Up.svg" alt="up-icon">
                         <img src="./SVG/Down.svg" alt="down-icon">
                     </button>
-                    <button onclick="onAddNewLine()" class="btn-edit btn-add-line">
+                    <button onclick="onAddNewLine()" class="btn-edit border-redius btn-add-line">
                         <img src="./SVG/+.svg" alt="add-icon">
                     </button>
-                    <button onclick="onDeleteLine()" class="btn-edit btn-delete-line">
+                    <button onclick="onDeleteLine()" class="btn-edit border-redius btn-delete-line">
                         <img src="./SVG/Delete.svg" alt="delete-icon">
                     </button>
                 </div>
-                <div class="text-editors-container">
+                <div class="text-editors-container border-redius">
                     <div class="text-editors grid align-center">
-                        <button onclick="onChangeFontSize(1)" class="btn-edit btn-font-size-up">
+                        <button onclick="onChangeFontSize(1)" class="btn-edit btn-font-size-up border-redius">
                             <img src="./SVG/A+.svg" alt="font-up-icon">
                         </button>
 
-                        <button onclick="onChangeFontSize(-1)" class="btn-edit btn-font-size-down">
+                        <button onclick="onChangeFontSize(-1)" class="btn-edit btn-font-size-down border-redius">
                             <img src="./SVG/A-.svg" alt="font-down-icon">
                         </button>
 
-                        <button onclick="setTextAlignment('left')" class="btn-edit btn-text-left">
+                        <button onclick="setTextAlignment('left')" class="btn-edit btn-text-left border-redius">
                             <img src="./SVG/Rectangle 4 left.svg" alt="align-left-icon">
                         </button>
 
-                        <button onclick="setTextAlignment('center')" class="btn-edit btn-text-center">
+                        <button onclick="setTextAlignment('center')" class="btn-edit btn-text-center border-redius">
                             <img src="./SVG/Rectangle 4 center.svg" alt="align-center-icon">
                         </button>
 
-                        <button onclick="setTextAlignment('right')" class="btn-edit btn-text-right">
+                        <button onclick="setTextAlignment('right')" class="btn-edit btn-text-right border-redius">
                             <img src="./SVG/Rectangle 4 right.svg" alt="align-right-icon">
                         </button>
 
-                        <select onchange="onChangeFontFamily(this.value)" class="font-family-select">
+                        <select onchange="onChangeFontFamily(this.value)" class="font-family-select border-redius">
                             <option value="myImpact">IMPACT</option>
                             <option value="arial">ARIAL</option>
                             <option value="fantasy">FANTASY</option>
@@ -86,26 +86,32 @@
 
                         <input class="color-input" onchange="setColor(this.value, 'stroke')" type="color"
                             value="#000000">
-                        <button class="btn-edit icon-button" onclick="onOpenColorPicker('stroke')">
+                        <button class="btn-edit icon-button border-redius" onclick="onOpenColorPicker('stroke')">
                             <img src="./SVG/Stroke.svg" alt="stroke-icon">
                         </button>
 
                         <input class="color-input" onchange="setColor(this.value, 'fill')" type="color" value="#ffffff">
-                        <button class="btn-edit icon-button" onclick="onOpenColorPicker('fill')">
+                        <button class="btn-edit icon-button border-redius" onclick="onOpenColorPicker('fill')">
                             <img src="./SVG/Fill.svg" alt="fill-icon">
                         </button>
                     </div>
                 </div>
 
                 <div class="stickers">
-                    <article>sticker1</article>
+                    <!-- <article>sticker1</article>
                     <article>sticker2</article>
-                    <article>sticker3</article>
+                    <article>sticker3</article> -->
                 </div>
 
-                <div class="actions">
-                    <button class="btn" onclick1="onUploadImg()">Share</button>
-                    <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+                <div class="actions grid column">
+                    <button class="border-redius btn-share flex justify-center align-center" onclick1="onUploadImg()">
+                        <img src="./SVG/Share.svg" alt="share-icon">
+                        Share
+                    </button>
+                    <button class="border-redius btn-download flex justify-center align-center">
+                        <img src="./SVG/Download.svg" alt="download-icon">
+                        <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -137,8 +143,8 @@
 
     <script src="js/services/eventService.js"></script>
     <script src="js/services/memeService.js"></script>
-    <script src="js/controllers/memeController.js"></script>
     <script src="js/controllers/galleryController.js"></script>
+    <script src="js/controllers/memeController.js"></script>
     <script src="js/main.js"></script>
 </body>
 

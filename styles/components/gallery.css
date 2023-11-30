@@ -24,7 +24,7 @@
 
 .gallery-section .image-filter {
     grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
-    gap: 5px;
+    gap: 0.5rem;
     justify-content: space-evenly;
     padding: 12px 25px;
 
@@ -65,7 +65,7 @@
     }
 
     .gallery-section .images-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
     
     .gallery-section .search-section {

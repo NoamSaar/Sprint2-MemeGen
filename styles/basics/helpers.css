@@ -21,6 +21,7 @@
 }
 
 
+
 /* GRID HELPERS */
 
 .grid {
@@ -45,4 +46,8 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+.border-redius {
+    border-radius: 10px;
 }

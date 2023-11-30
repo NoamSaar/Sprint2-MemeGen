@@ -70,7 +70,6 @@
 .editor-container .btn-edit {
     width: 48px;
     height: 46px;
-    border-radius: 10px;
     border: none;
     background-color: var(--clrEditorBtn);
     box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0;
@@ -95,7 +94,6 @@
 .editor-container .text-editors-container {
     background-color: RGBA(25, 165, 159, 1);
     padding-inline: 10px;
-    border-radius: 10px;
 }
 
 .editor-container .text-editors {
@@ -112,10 +110,43 @@
     justify-self: stretch;
     padding-inline: 18px;
     border: none;
-    border-radius: 10px;
     font-size: 1.25rem;
     box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0;
 }
+
+.editor-container .actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+}
+
+.editor-container .actions button {
+    font-family: poppinsRegular, sans-serif;
+    color: var(--clrHeaderFont);
+    border: none;
+}
+
+.editor-container .actions img {
+    margin-inline-end: 10px;
+}
+
+.editor-container .actions .btn-share {
+    background-color: #1e7cd3;
+    box-shadow: 0 3px 0 0 #155ea2, inset #8baac7a4 -1px 3.5px 0 0;
+
+}
+
+.editor-container .actions .btn-download {
+    background-color: #8f44bb;
+    box-shadow: 0 3px 0 0 #50236b, inset #ac9bb679 -1px 4px 0 0;
+}
+
+.editor-container .actions .btn-download a {
+    font-family: poppinsRegular, sans-serif;
+    color: inherit;
+    text-decoration: none;
+}
+
 
 
 @media (max-width: 920px) {
