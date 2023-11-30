@@ -13,4 +13,6 @@ function renderGallery() {
 
 function onImgSelect(imgId) {
     setImg(imgId)
+
+    onChangeToSection('editor')
 }

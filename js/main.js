@@ -2,6 +2,7 @@
 
 let gElCanvas
 let gCtx
+let gCurrDisplay = 'editor'
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
@@ -38,6 +39,7 @@ function onChangeToSection(section) {
 
     if (elCurrSection.style.display === 'grid') return
 
+    gCurrDisplay = section
     elCurrSection.style.display = 'grid' 
     elPrevSection.style.display = 'none'
 
