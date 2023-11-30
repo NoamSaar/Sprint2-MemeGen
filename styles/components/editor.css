@@ -57,7 +57,7 @@
 .editor-section .text-editors,
 .editor-section .stickers,
 .editor-section .actions {
-    margin-top: 10px; 
+    margin: 10px; 
 }
 
 .editor-container img {
@@ -67,16 +67,20 @@
 .editor-container .line-editors {
     justify-content: center;
     gap: 16px;
-    margin-block-end: 10px;
+    margin-block: 15px;
+}
+
+.editor-container .line-editors .btn-edit img {
+    text-shadow: #4f7a82;
 }
 
 .editor-container .btn-edit{
-    width: 50px; 
-    height: 50px;
+    width: 48px; 
+    height: 46px;
     border-radius: 10px;
     border: none;
     background-color: var(--clrEditorBtn);
-    box-shadow: 0 3px 0 0 rgb(97, 97, 97), inset #fff 0 3px 0 0 ;
+    box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0 ;
 }
 
 .editor-container .btn-edit.btn-switch-line{
@@ -112,8 +116,10 @@
     align-self: stretch;
     justify-self: stretch;
     padding-inline: 18px;
+    border: none;
     border-radius: 10px;
     font-size: 1.25rem;
+    box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0 ;
 }
 
 /* .editor-container .line-editors . */

@@ -17,7 +17,8 @@
                 <li onclick="onChangeToSection(this.getAttribute('value'))" value="gallery"><a class="main-nav-item"
                         href="#">Gallery</a></li>
                 <li onclick="onChangeToSection(this.getAttribute('value'))" value="editor"><a class="main-nav-item"
-                        href="#">Memes</a></li>
+                        href="#">Editor</a></li>
+                <li><a class="main-nav-item" href="#">Saved</a></li>
                 <li><a class="main-nav-item" href="#">About</a></li>
             </ul>
 
@@ -43,7 +44,7 @@
                 <div class="line-editors grid column">
                     <!-- <button class="btn-move-line-up">move-up</button>
                     <button class="btn-move-line-down">move-down</button> -->
-                    <button onclick="onSwitchLine()" class="btn-edit btn-switch-line">
+                    <button onclick="onSwitchLine()" class="btn-edit btn-switch-line flex justify-center align-center">
                         <img src="./SVG/Up.svg" alt="up-icon">
                         <img src="./SVG/Down.svg" alt="down-icon">
                     </button>
@@ -83,18 +84,17 @@
                             <option value="poppinsRegular">POPPINS</option>
                         </select>
 
-                        <input class="color-input" onchange="setColor(this.value, 'fill')" type="color" value="#ffffff">
-                        <button class="btn-edit icon-button" onclick="onOpenColorPicker('fill')">
-                            <img src="./SVG/Fill.svg" alt="fill-icon">
-                        </button>
-
                         <input class="color-input" onchange="setColor(this.value, 'stroke')" type="color"
                             value="#000000">
                         <button class="btn-edit icon-button" onclick="onOpenColorPicker('stroke')">
                             <img src="./SVG/Stroke.svg" alt="stroke-icon">
                         </button>
-                    </div>
 
+                        <input class="color-input" onchange="setColor(this.value, 'fill')" type="color" value="#ffffff">
+                        <button class="btn-edit icon-button" onclick="onOpenColorPicker('fill')">
+                            <img src="./SVG/Fill.svg" alt="fill-icon">
+                        </button>
+                    </div>
                 </div>
 
                 <div class="stickers">
