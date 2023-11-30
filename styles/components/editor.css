@@ -1,20 +1,12 @@
 .editor-section {
     display: grid;
-    grid-template-columns: 60px 1fr 2.5rem 1fr 60px;
-    /* grid-template-columns: 
-        minmax(20px, 1fr)
-        minmax(1fr, 400px)
-        2.5rem
-        minmax(1fr, 400px)
-        minmax(20px, 1fr) */
-
-        /* 1fr 400px 2.5rem 400px 1fr; */
-
-    /* gap: 2.5rem; */
+    /* grid-template-rows: 1fr 2.5rem 1fr; */
+    margin-block: 30px;
 }
 
 .editor-section .canvas-container {
-    grid-column: 2;
+    grid-row: 1;
+
     width: 100%;
     background-color: gray;
     border-radius: 25px;
@@ -30,7 +22,8 @@
 }
 
 .editor-section .editor-container {
-    grid-column: 4;
+    grid-row: 3;
+
     background-color: var(--clrPrimary1);
     border-radius: 25px;
     padding: 15px 30px;
@@ -57,7 +50,7 @@
 .editor-section .text-editors,
 .editor-section .stickers,
 .editor-section .actions {
-    margin: 10px; 
+    margin: 10px;
 }
 
 .editor-container img {
@@ -74,28 +67,29 @@
     text-shadow: #4f7a82;
 }
 
-.editor-container .btn-edit{
-    width: 48px; 
+.editor-container .btn-edit {
+    width: 48px;
     height: 46px;
     border-radius: 10px;
     border: none;
     background-color: var(--clrEditorBtn);
-    box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0 ;
+    box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0;
 }
 
-.editor-container .btn-edit.btn-switch-line{
+.editor-container .btn-edit.btn-switch-line {
     background-color: var(--clrBtnLineSwitch);
-    box-shadow: 0 3px 0 0 #4f7a82, inset #999d9d86 -1px 4px 0 0 ;
+    box-shadow: 0 3px 0 0 #4f7a82, inset #999d9d86 -1px 4px 0 0;
 }
 
-.editor-container .btn-edit.btn-add-line{
+.editor-container .btn-edit.btn-add-line {
     background-color: var(--clrBtnLineAdd);
-    box-shadow: 0 3px 0 0 #2a704b, inset #a5c4b478 -1px 4px 0 0 ;
+    box-shadow: 0 3px 0 0 #2a704b, inset #a5c4b478 -1px 4px 0 0;
 }
 
-.editor-container .btn-edit.btn-delete-line{
+.editor-container .btn-edit.btn-delete-line {
     background-color: var(--clrBtnLineDelete);
-    box-shadow: 0 3px 0 0 #792323, inset #8674746d -1px 4px 0 0 ;;
+    box-shadow: 0 3px 0 0 #792323, inset #8674746d -1px 4px 0 0;
+    ;
 }
 
 .editor-container .text-editors-container {
@@ -106,6 +100,7 @@
 
 .editor-container .text-editors {
     grid-template-columns: repeat(5, 1fr);
+    /* grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); */
     justify-content: center;
     justify-items: center;
     gap: 15px;
@@ -119,37 +114,44 @@
     border: none;
     border-radius: 10px;
     font-size: 1.25rem;
-    box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0 ;
+    box-shadow: 0 3px 0 0 #6b7670, inset #fff 0 3px 0 0;
 }
 
-/* .editor-container .line-editors . */
 
 @media (max-width: 920px) {
     .editor-section {
-        grid-template-columns: 150px 1fr 150px;
         grid-template-rows: 1fr 2.5rem 1fr;
-        margin-block-start: 2rem;
     }
+}
 
+@media (min-width: 680px) {
+    .editor-section {
+        grid-template-columns: 110px 1fr 110px;
+    }
 
     .editor-section .canvas-container {
         grid-column: 2 / 3;
-        grid-row: 1;
+    }
+
+    .editor-section .editor-container {
+        grid-column: 2 / 3;
+    }
+}
+
+@media (min-width: 920px) {
+    .editor-section {
+        grid-template-columns: minmax(10px, 60px) minmax(400px, 1fr) 2.5rem minmax(400px, 1fr) minmax(10px, 60px);
+    }
+
+    .editor-section .canvas-container {
+        grid-column: 2;
+        grid-row: 1
     }
     
     .editor-section .editor-container {
-        grid-column: 2 / 3;
-        grid-row: 3;
+        grid-column: 4;
+        grid-row: 1
     }
 
-}
 
-@media (max-width: 680px) {
-    .editor-section {
-        grid-template-columns: 
-            /* minmax(20px, 100px)
-            1fr
-            minmax(20px, 100px) */
-        100px 1fr 60px;
-    }
 }

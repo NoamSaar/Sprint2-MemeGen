@@ -7,12 +7,12 @@ header {
     font-family: poppinsRegular, sans-serif;
 }
 
-header>* {
+header > * {
     padding: 15px;
 }
 
 header .logo {
-    font-size: 1.375rem;
+    font-size: 2rem;
     margin-inline-start: 50px;
 }
 
@@ -47,7 +47,6 @@ header button {
 header .btn-toggle-menu .hamburger-lines {
     height: 26px;
     width: 32px;
-
 
     display: flex;
     flex-direction: column;
@@ -137,5 +136,31 @@ body.menu-open .btn-toggle-menu .hamburger-lines .line.line3 {
         grid-template-rows: 1fr;
     }
 
+
+}
+
+@media (min-width: 680px) {
+
+    header .logo {
+        font-size: 1.4rem;
+        margin-inline-start: 25px;
+    }
+
+    header .main-nav a {
+        font-size: 1rem;
+    }
+
+}
+
+@media (min-width: 920px) {
+
+    header .logo {
+        font-size: 1.375rem;
+        margin-inline-start: 50px;
+    }
+
+    header .main-nav a {
+        font-size: 1.3125rem;
+    }
 
 }
