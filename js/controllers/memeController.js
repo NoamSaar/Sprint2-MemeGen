@@ -38,13 +38,20 @@ function renderTxtInput() {
     const elTxtInput = document.querySelector('input[type="text"]')
 
     const { lines } = getMeme()
-    const currTxt = lines[0].txt
+    const currLine = getSelectedLineIdx()
+    const currTxt = lines[currLine].txt
 
     elTxtInput.value = currTxt
 }
 
 function onAddNewLine() {
     addNewLine()
+    renderMeme()
+    renderTxtInput()
+}
+
+function onSwitchLine() {
+    switchLine()
     renderMeme()
     renderTxtInput()
 }

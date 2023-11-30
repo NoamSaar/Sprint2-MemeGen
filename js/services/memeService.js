@@ -100,6 +100,14 @@ function addNewLine() {
 
 }
 
+function switchLine() {
+    const { lines } = gMeme
+
+    if (lines.length <= 1) return
+
+    gSelectedLineIdx = (gSelectedLineIdx + 1) % lines.length
+}
+
 function _updateMeme(txt, lineIdx) {
     const { lines } = gMeme
 
