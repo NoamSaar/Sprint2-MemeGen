@@ -10,11 +10,12 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
 
     addListeners()
-    
+
+    renderSavedMemes()
     renderGallery()
     resizeCanvas()
-    
-    createMeme( { posX: gElCanvas.width / 2, posY: 50 } ) 
+
+    createMeme({ posX: gElCanvas.width / 2, posY: 50 })
 
     window.addEventListener('resize', () => {
         resizeCanvas()
@@ -31,7 +32,7 @@ function onInit() {
     })
 
     renderMeme()
-    renderTxtInput ()
+    renderTxtInput()
 }
 
 function toggleMenu() {
@@ -62,7 +63,7 @@ function onChangeToSection(section) {
     if (elCurrSection.style.display === 'grid') return
 
     gCurrDisplay = section
-    elCurrSection.style.display = 'grid' 
+    elCurrSection.style.display = 'grid'
     elOtherSection1.style.display = 'none'
     elOtherSection2.style.display = 'none'
 

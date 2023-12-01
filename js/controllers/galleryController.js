@@ -20,3 +20,36 @@ function onFlexibleMode() {
     const randomInt = getRandomInt(0, imgs.length)
     onImgSelect(randomInt)
 }
+
+function onSaveToSaved() {
+    const meme = getMeme()
+    meme.url = gElCanvas.toDataURL()
+    saveMeme(meme)
+    renderSavedMemes()
+}
+
+function renderSavedMemes() {
+    const savedMemes = getSavedMemes()
+
+    if (!savedMemes.length) return
+
+    const savedSection = document.querySelector('.saved-section')
+    savedSection.innerHTML = ''
+
+    savedMemes.forEach((meme, index) => {
+        const savedImg = document.createElement('img')
+        savedImg.src = meme.url
+        savedImg.addEventListener('click', () => onEditSavedMeme(index))
+
+        savedSection.appendChild(savedImg)
+    })
+}
+
+function onEditSavedMeme(index) {
+    const savedMemes = getSavedMemes()
+    const memeToEdit = savedMemes[index]
+
+    loadMemeForEditing(memeToEdit)
+    renderMeme()
+    onChangeToSection('editor')
+}

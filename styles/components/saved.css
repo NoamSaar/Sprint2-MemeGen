@@ -1,0 +1,43 @@
+.saved-section {
+    display: none;
+    background-color: var( --clrPrimary1);
+    border-radius: 10px;
+
+    padding: 20px;
+
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+    align-items: center;
+    /* justify-items: center; */
+    grid-auto-flow: dense;  
+
+    gap: 20px
+}
+
+.saved-section img:not(.icon) {
+    width: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.saved-section .no-saved {
+    position: relative;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: gray;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+}
+
+.saved-section .no-saved img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+}
