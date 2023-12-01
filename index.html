@@ -39,7 +39,7 @@
             </div>
 
             <div class="editor-container grid">
-                <input onchange="onChangeInput(this.value)" type="text" class="search-input" placeholder="Text...">
+                <input oninput="onChangeInput(this.value)" type="text" class="search-input" placeholder="Text...">
 
                 <div class="line-editors grid column align-center">
                     <!-- <button class="btn-move-line-up">move-up</button>
@@ -55,6 +55,7 @@
                         <img src="./SVG/Delete.svg" alt="delete-icon">
                     </button>
                 </div>
+
                 <div class="text-editors-container border-redius">
                     <div class="text-editors grid align-center">
                         <button onclick="onChangeFontSize(1)" class="btn-edit btn-font-size-up border-redius">
@@ -65,15 +66,15 @@
                             <img src="./SVG/A-.svg" alt="font-down-icon">
                         </button>
 
-                        <button onclick="setTextAlignment('left')" class="btn-edit btn-text-left border-redius">
+                        <button onclick="onSetTextAlignment('left')" class="btn-edit btn-text-left border-redius">
                             <img src="./SVG/Rectangle 4 left.svg" alt="align-left-icon">
                         </button>
 
-                        <button onclick="setTextAlignment('center')" class="btn-edit btn-text-center border-redius">
+                        <button onclick="onSetTextAlignment('center')" class="btn-edit btn-text-center border-redius">
                             <img src="./SVG/Rectangle 4 center.svg" alt="align-center-icon">
                         </button>
 
-                        <button onclick="setTextAlignment('right')" class="btn-edit btn-text-right border-redius">
+                        <button onclick="onSetTextAlignment('right')" class="btn-edit btn-text-right border-redius">
                             <img src="./SVG/Rectangle 4 right.svg" alt="align-right-icon">
                         </button>
 
@@ -114,6 +115,7 @@
                     </button>
                 </div>
             </div>
+            
         </section>
 
         <section class="gallery-section">
@@ -131,6 +133,8 @@
                 <button class="btn-filter-options">More</button>
             </div>
 
+            <button class="flexible" onclick="onFlexibleMode()">I'm Flexible</button>
+
             <div class="images-container grid"></div>
         </section>
 
@@ -141,6 +145,7 @@
         </section>
     </main>
     
+    <script src="js/services/utilService.js"></script>
     <script src="js/main.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/galleryController.js"></script>

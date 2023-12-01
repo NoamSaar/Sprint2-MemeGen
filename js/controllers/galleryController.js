@@ -14,3 +14,9 @@ function onImgSelect(imgId) {
     setImg(imgId)
     onChangeToSection('editor')
 }
+
+function onFlexibleMode() {
+    const imgs = getImages()
+    const randomInt = getRandomInt(0, imgs.length)
+    onImgSelect(randomInt)
+}

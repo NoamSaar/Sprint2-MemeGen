@@ -44,6 +44,10 @@
     background: var( --clrSecondary);
 }
 
+.gallery-section .flexible {
+    justify-self: center;
+}
+
 .gallery-section .images-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     align-items: center;
