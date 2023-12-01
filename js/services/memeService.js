@@ -1,11 +1,12 @@
 'use strict'
 
-let gSelectedLineIdx = 0
-
 let gFillColor = 'white'
 let gStrokeColor = 'black'
 let gFontSize = 40
 let gFontFamily = 'myImpact'
+
+let gSelectedLineIdx = 0
+let gMeme
 
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: [] },
@@ -28,8 +29,6 @@ var gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: [] },
 ]
 
-let gMeme
-
 function createMeme(pos) {
     const { posX, posY } = pos
     return gMeme = {
@@ -46,10 +45,6 @@ function createMeme(pos) {
             }
         ]
     }
-}
-
-function setSelectedLine(lineIdx) {
-    gSelectedLineIdx = lineIdx
 }
 
 function getMeme() {
@@ -78,19 +73,6 @@ function getSelectedLineIdx() {
 
 function setLineTxt(txt, lineIdx) {
     _updateMeme(txt, lineIdx)
-}
-
-function setLineDisplay(txt) {
-    const { lines } = getMeme()
-    const selectedLineIdx = getSelectedLineIdx()
-
-    if (lines.length > 0 && selectedLineIdx >= 0 && selectedLineIdx < lines.length) {
-        lines[selectedLineIdx].txt = txt
-    }
-}
-
-function setImg(imgId) {
-    gMeme.selectedImgId = imgId
 }
 
 function setFillColor(color, lineIdx) {
@@ -200,6 +182,7 @@ function setTextAlignment(align) {
     })
 }
 
+// private functions
 function _updateMeme(txt, lineIdx) {
     const { lines } = gMeme
 

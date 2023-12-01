@@ -5,19 +5,9 @@ function renderMeme(color = 'white') {
     drawImage(meme.selectedImgId)
 
     meme.lines.forEach((line, idx) => {
-        // let newYPlacement
-
-        // if (idx === 0) {
-        //     newYPlacement = 50
-        // } else if (idx === 1) {
-        //     newYPlacement = gElCanvas.height - 50
-        // } else {
-        //     newYPlacement = gElCanvas.height / 2
-        // }
 
         drawText(line.txt, line.size, line.position.x, line.position.y)
         if (idx === getSelectedLineIdx()) {
-            // You can add a visual indication for the selected line, for example, a border
             gCtx.strokeStyle = color
             gCtx.strokeRect(
                 line.position.x - gCtx.measureText(line.txt).width / 2,
@@ -27,6 +17,26 @@ function renderMeme(color = 'white') {
             )
         }
     })
+}
+
+function drawImage(imgId) {
+    const elImg = new Image()
+
+    elImg.src = `./img/${imgId}.jpg`
+    elImg.onload = () => {
+        coverCanvasWithImg(elImg)
+    }
+}
+
+function drawText(text, size, x, y) {
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = getStrokeColor()
+    gCtx.fillStyle = getFillColor()
+    gCtx.font = `${size}px ${getFontFamily()}`
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
 }
 
 function renderTxtInput() {
@@ -91,27 +101,6 @@ function onChangeInput(txt) {
     renderMeme()
 }
 
-
-function drawImage(imgId) {
-    const elImg = new Image()
-
-    elImg.src = `./img/${imgId}.jpg`
-    elImg.onload = () => {
-        coverCanvasWithImg(elImg)
-    }
-}
-
-function drawText(text, size, x, y) {
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = getStrokeColor()
-    gCtx.fillStyle = getFillColor()
-    gCtx.font = `${size}px ${getFontFamily()}`
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
-}
-
 function onSetFillColor(color, lineIdx = 0) {
     setFillColor(color, lineIdx)
     renderMeme()
@@ -122,10 +111,6 @@ function onSetStrokeColor(color, lineIdx = 0) {
     renderMeme()
 }
 
-function onSelectImg(elImg) {
-    coverCanvasWithImg(elImg)
-}
-
 function coverCanvasWithImg(elImg) {
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -133,16 +118,11 @@ function coverCanvasWithImg(elImg) {
     renderMeme()
 }
 
-function renderImg(img) {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width - 1, gElCanvas.height - 1)
-}
-
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
 
     gElCanvas.width = elContainer.clientWidth - 1
 }
-
 
 function onDownloadCanvas(elLink) {
     const originalStrokeStyle = gCtx.strokeStyle
@@ -157,7 +137,6 @@ function onDownloadCanvas(elLink) {
     elLink.href = dataUrl
     elLink.download = 'my-img'
 }
-
 
 function onOpenColorPicker(type) {
     const colorPicker = document.createElement('input');

@@ -38,7 +38,6 @@ function findClickedLine(clickedPos) {
     return -1 // No line clicked
 }
 
-
 function onDown(ev) {
     const clickedPos = getEvPos(ev)
 

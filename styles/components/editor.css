@@ -118,7 +118,7 @@
 }
 
 .editor-container .actions {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
 
 }
@@ -127,6 +127,7 @@
     font-family: poppinsRegular, sans-serif;
     color: var(--clrHeaderFont);
     border: none;
+    cursor: pointer;
 }
 
 .editor-container .actions img {
@@ -136,7 +137,6 @@
 .editor-container .actions .btn-share {
     background-color: #1e7cd3;
     box-shadow: 0 3px 0 0 #155ea2, inset #8baac7a4 -1px 3.5px 0 0;
-
 }
 
 .editor-container .actions .btn-download {
@@ -144,12 +144,20 @@
     box-shadow: 0 3px 0 0 #50236b, inset #ac9bb679 -1px 4px 0 0;
 }
 
-.editor-container .actions .btn-download a {
+.editor-container .actions a {
     font-family: poppinsRegular, sans-serif;
-    color: inherit;
+    color: var(--clrHeaderFont);
     text-decoration: none;
 }
 
+.editor-container a span {
+    font-size: 0.8rem;
+}
+
+.editor-container .actions .btn-save {
+    background-color: #b22d13;
+    box-shadow: 0 3px 0 0 #7c1d0a, inset #c691877c -1px 3.5px 0 0;
+}
 
 
 @media (max-width: 920px) {

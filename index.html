@@ -48,9 +48,8 @@
                 <input oninput="onChangeInput(this.value)" type="text" class="search-input" placeholder="Text...">
 
                 <div class="line-editors grid column align-center">
-                    <!-- <button class="btn-move-line-up">move-up</button>
-                    <button class="btn-move-line-down">move-down</button> -->
-                    <button onclick="onSwitchLine()" class="btn-edit border-redius btn-switch-line flex justify-center align-center">
+                    <button onclick="onSwitchLine()"
+                        class="btn-edit border-redius btn-switch-line flex justify-center align-center">
                         <img src="./SVG/Up.svg" alt="up-icon">
                         <img src="./SVG/Down.svg" alt="down-icon">
                     </button>
@@ -115,13 +114,18 @@
                         <img src="./SVG/Share.svg" alt="share-icon">
                         Share
                     </button>
-                    <button class="border-redius btn-download flex justify-center align-center">
-                        <img src="./SVG/Download.svg" alt="download-icon">
-                        <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+                    <button onclick="onSaveToSaved()" class="btn-save border-redius flex justify-center align-center">
+                        <img src="./SVG/+.svg" alt="save-icon">
+                        save
                     </button>
+                    <a class="border-redius btn-download flex justify-center align-center" href="#"
+                        onclick="onDownloadCanvas(this)" download="file-name">
+                        <img src="./SVG/Download.svg" alt="download-icon"><span>Download</span>
+                    </a>
+
+
                 </div>
             </div>
-            
         </section>
 
         <section class="gallery-section">
@@ -144,23 +148,24 @@
             <div class="images-container grid"></div>
         </section>
 
-
         <section class="saved-section">
-            <div class="saved-memes-container grid"></div>
+            <div class="no-saved" onclick="onChangeToSection('gallery')">
+                New Meme
+                <img class="icon" src="./SVG/+.svg" alt="add-icon">
+            </div>
         </section>
 
-        <section class="about-section">
-
-        </section>
+        <section class="about-section"></section>
     </main>
-    
+
     <script src="js/services/utilService.js"></script>
     <script src="js/services/storageService.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/services/galleryService.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/galleryController.js"></script>
     <script src="js/controllers/memeController.js"></script>
-    <script src="js/services/eventService.js"></script>
+    <script src="js/controllers/eventController.js"></script>
 </body>
 
 </html>
