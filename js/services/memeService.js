@@ -28,7 +28,7 @@ var gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: [] },
 ]
 
-let gMeme 
+let gMeme
 
 function createMeme(pos) {
     const { posX, posY } = pos
@@ -80,6 +80,15 @@ function setLineTxt(txt, lineIdx) {
     _updateMeme(txt, lineIdx)
 }
 
+function setLineDisplay(txt) {
+    const { lines } = getMeme()
+    const selectedLineIdx = getSelectedLineIdx()
+
+    if (lines.length > 0 && selectedLineIdx >= 0 && selectedLineIdx < lines.length) {
+        lines[selectedLineIdx].txt = txt
+    }
+}
+
 function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
@@ -92,10 +101,6 @@ function setFillColor(color, lineIdx) {
 function setStrokeColor(color, lineIdx) {
     gStrokeColor = color
     gMeme.lines[lineIdx].stroke = color
-}
-
-function changeFontSize(diff, lineIdx) {
-
 }
 
 function addNewLine(pos) {
@@ -115,7 +120,7 @@ function addNewLine(pos) {
         position: { x, y },
         isDrag: false,
     }
-    
+
     gMeme.lines.push(newLine)
 
     gSelectedLineIdx = gMeme.lines.length - 1
@@ -164,12 +169,35 @@ function changeFontFamily(fontFamily) {
 }
 
 function setTextAlignment(align) {
-    const { lines } = gMeme
+    var posX
+    switch (align) {
+        case 'left':
+            posX = 50
+            break
+        case 'center':
+            posX = gElCanvas.width / 2
+            break
+        case 'right':
+            posX = gElCanvas.width - 50
+            break
+    }
 
-    if (lines.length === 0) return
+    gMeme.lines.forEach((line) => {
+        const textWidth = gCtx.measureText(line.txt).width
+        const halfTextWidth = textWidth / 2
 
-    const selectedLine = lines[gSelectedLineIdx]
-    selectedLine.textAlign = align
+        switch (align) {
+            case 'left':
+                line.position.x = posX + halfTextWidth
+                break
+            case 'center':
+                line.position.x = posX
+                break
+            case 'right':
+                line.position.x = posX - halfTextWidth
+                break
+        }
+    })
 }
 
 function _updateMeme(txt, lineIdx) {

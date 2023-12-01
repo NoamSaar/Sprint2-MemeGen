@@ -1,6 +1,5 @@
 'use strict'
 
-
 function renderMeme(color = 'white') {
     const meme = getMeme()
     drawImage(meme.selectedImgId)
@@ -82,8 +81,8 @@ function onChangeFontFamily(fontFamily) {
     renderMeme()
 }
 
-function onSetTextAlignment(diff) {
-    setTextAlignment(diff)
+function onSetTextAlignment(align) {
+    setTextAlignment(align)
     renderMeme()
 }
 
@@ -91,6 +90,7 @@ function onChangeInput(txt) {
     setLineTxt(txt, getSelectedLineIdx())
     renderMeme()
 }
+
 
 function drawImage(imgId) {
     const elImg = new Image()
