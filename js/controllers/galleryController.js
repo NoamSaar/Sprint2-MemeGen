@@ -1,10 +1,15 @@
 'use strict'
 
+function initGallery() {
+    renderGallery(gImgs)
+    updateKeywordsList()
+}
+
 function renderGallery() {
     const images = getImages()
 
     var strHtml = images.map(img => `
-        <img data-img-id="${img.id}" onclick="onImgSelect(${img.id})" src="${img.url}" alt=""></img>
+        <img data-img-id="${img.id}" onclick="onImgSelect(${img.id})" src="${img.url}" alt="Gallery Image"></img>
     `).join('')
 
     document.querySelector('.images-container').innerHTML = strHtml
@@ -52,4 +57,16 @@ function onEditSavedMeme(index) {
     loadMemeForEditing(memeToEdit)
     renderMeme()
     onChangeToSection('editor')
+}
+
+function updateKeywordsList() {
+    const datalist = document.getElementById('keywords')
+    const uniqueKeywords = getUniqueKeywords(gImgs)
+
+    datalist.innerHTML = '';
+    uniqueKeywords.forEach(keyword => {
+        const option = document.createElement('option');
+        option.value = keyword;
+        datalist.appendChild(option);
+    });
 }

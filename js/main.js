@@ -12,10 +12,14 @@ function onInit() {
     addListeners()
 
     renderSavedMemes()
+    // initGallery()
     renderGallery()
     resizeCanvas()
 
     createMeme({ posX: gElCanvas.width / 2, posY: 50 })
+
+    renderMeme()
+    renderTxtInput()
 
     window.addEventListener('resize', () => {
         resizeCanvas()
@@ -30,9 +34,6 @@ function onInit() {
         })
         renderMeme()
     })
-
-    renderMeme()
-    renderTxtInput()
 }
 
 function toggleMenu() {
