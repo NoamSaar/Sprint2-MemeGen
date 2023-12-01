@@ -174,7 +174,8 @@
 
 @media (min-width: 920px) {
     .editor-section {
-        grid-template-columns: minmax(10px, 60px) minmax(400px, 1fr) 2.5rem minmax(400px, 1fr) minmax(10px, 60px);
+        grid-template-columns: minmax(10px, 60px) minmax(400px, 550px) 2.5rem minmax(400px, 550px) minmax(10px, 60px);
+        justify-content: center;
     }
 
     .editor-section .canvas-container {

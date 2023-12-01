@@ -9,19 +9,24 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    
     addListeners()
-    
     
     renderGallery()
     resizeCanvas()
     
-    posX = gElCanvas.width / 2
-    posY = 50
-    createMeme( {posX, posY} ) 
+    createMeme( { posX: gElCanvas.width / 2, posY: 50 } ) 
 
     window.addEventListener('resize', () => {
         resizeCanvas()
+        gMeme.lines.forEach((line, idx) => {
+            line.position.x = gElCanvas.width / 2
+
+            if (idx === 1) {
+                line.position.y = gElCanvas.height - 50
+            } else if (idx > 1) {
+                line.position.y = gElCanvas.height / 2
+            }
+        })
         renderMeme()
     })
 
