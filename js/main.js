@@ -9,16 +9,16 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    posX = gElCanvas.width / 2
-    console.log('posX:', posX)
-    posY = 50
-
+    
     addListeners()
-
-    createMeme( {posX, posY} ) 
-
+    
+    
     renderGallery()
     resizeCanvas()
+    
+    posX = gElCanvas.width / 2
+    posY = 50
+    createMeme( {posX, posY} ) 
 
     window.addEventListener('resize', () => {
         resizeCanvas()

@@ -5,28 +5,23 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onCanvasClick(ev) {
     const clickedPos = getEvPos(ev)
-    // console.log('clickedPos:', clickedPos)
     
     // Check if any line is clicked
     const clickedLineIdx = findClickedLine(clickedPos)
-    // console.log('clickedLineIdx:', clickedLineIdx)
 
     if (clickedLineIdx !== -1) {
         gMeme.selectedLineIdx = clickedLineIdx
         gSelectedLineIdx = clickedLineIdx
-        // Update the input field with the selected line's text
         renderMeme()
         renderTxtInput()
     }
 }
 
 function findClickedLine(clickedPos) {
-    // console.log('clickedPos:', clickedPos)
     const { lines } = gMeme
 
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i]
-        // console.log('line.position:', line.position)
         const textWidth = gCtx.measureText(line.txt).width
         const halfTextWidth = textWidth / 2
 
@@ -47,36 +42,37 @@ function findClickedLine(clickedPos) {
 function onDown(ev) {
     const clickedPos = getEvPos(ev)
 
-    // Check if any line is clicked
     const clickedLineIdx = findClickedLine(clickedPos)
-    console.log('clickedLineIdx:', clickedLineIdx)
 
     if (clickedLineIdx !== -1) {
-        setLineDrag(true, clickedLineIdx);
-
-        gStartPos = clickedPos;
-        document.body.style.cursor = 'grabbing';
+        setLineDrag(true, clickedLineIdx)
+        gMeme.selectedLineIdx = clickedLineIdx
+        gSelectedLineIdx = clickedLineIdx
+        
+        gStartPos = clickedPos
+        document.body.style.cursor = 'grabbing'
     }
 }
 
 function onMove(ev) {
-    const { isDrag } = gMeme.lines[gMeme.selectedLineIdx];
-    if (!isDrag) return;
+    const { isDrag } = gMeme.lines[gMeme.selectedLineIdx]
+    if (!isDrag) return
 
-    const pos = getEvPos(ev);
+    const pos = getEvPos(ev)
 
-    const dx = pos.x - gStartPos.x;
-    const dy = pos.y - gStartPos.y;
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
 
-    moveLine(gMeme.selectedLineIdx, dx, dy);
+    moveLine(gMeme.selectedLineIdx, dx, dy)
 
-    gStartPos = pos;
-    renderMeme();
+    gStartPos = pos
+    renderMeme()
 }
 
 function onUp() {
     setLineDrag(false, gMeme.selectedLineIdx)
     document.body.style.cursor = 'grab'
+    gMeme.selectedLineIdx = -1
 }
 
 function setLineDrag(isDrag, lineIdx) {
@@ -122,7 +118,7 @@ function addMouseListeners() {
 }
 
 function addTouchListeners() {
-    gElCanvas.addEventListener('touchstart', onDown)
-    gElCanvas.addEventListener('touchmove', onMove)
-    gElCanvas.addEventListener('touchend', onUp)
+    gElCanvas.addEventListener('touchstart', onDown, { passive: true })
+    gElCanvas.addEventListener('touchmove', onMove, { passive: true })
+    gElCanvas.addEventListener('touchend', onUp, { passive: true })
 }

@@ -42,6 +42,7 @@ function createMeme(pos) {
                 color: 'white',
                 stroke: 'black',
                 position: { x: posX, y: posY },
+                isDrag: false,
             }
         ]
     }
@@ -112,6 +113,7 @@ function addNewLine(pos) {
         color: defaultColor,
         stroke: defaultStroke,
         position: { x, y },
+        isDrag: false,
     }
     
     gMeme.lines.push(newLine)
