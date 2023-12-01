@@ -14,12 +14,18 @@
 
         <nav class="main-nav flex ">
             <ul class="main-nav-list clean-list">
-                <li onclick="onChangeToSection(this.getAttribute('value'))" value="gallery"><a class="main-nav-item"
-                        href="#">Gallery</a></li>
-                <li onclick="onChangeToSection(this.getAttribute('value'))" value="editor"><a class="main-nav-item"
-                        href="#">Editor</a></li>
-                <li><a class="main-nav-item" href="#">Saved</a></li>
-                <li><a class="main-nav-item" href="#">About</a></li>
+                <li onclick="onChangeToSection(this.getAttribute('value'))" value="gallery">
+                    <a class="main-nav-item" href="#">Gallery</a>
+                </li>
+                <li onclick="onChangeToSection(this.getAttribute('value'))" value="editor">
+                    <a class="main-nav-item" href="#">Editor</a>
+                </li>
+                <li onclick="onChangeToSection(this.getAttribute('value'))" value="saved">
+                    <a class="main-nav-item" href="#">Saved</a>
+                </li>
+                <li>
+                    <a class="main-nav-item" href="#">About</a>
+                </li>
             </ul>
 
         </nav>
@@ -139,6 +145,9 @@
         </section>
 
 
+        <section class="saved-section">
+            <div class="saved-memes-container grid"></div>
+        </section>
 
         <section class="about-section">
 
@@ -146,6 +155,7 @@
     </main>
     
     <script src="js/services/utilService.js"></script>
+    <script src="js/services/storageService.js"></script>
     <script src="js/main.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/galleryController.js"></script>

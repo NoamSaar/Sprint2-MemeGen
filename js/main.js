@@ -39,12 +39,22 @@ function toggleMenu() {
 }
 
 function onChangeToSection(section) {
-    var elPrevSection
+    var elOtherSection1
+    var elOtherSection2
 
-    if (section === 'gallery') {
-        elPrevSection = document.querySelector(`.editor-section`)
-    } else {
-        elPrevSection = document.querySelector(`.gallery-section`)
+    switch (section) {
+        case ('gallery'):
+            elOtherSection1 = document.querySelector(`.editor-section`)
+            elOtherSection2 = document.querySelector(`.saved-section`)
+            break
+        case ('editor'):
+            elOtherSection1 = document.querySelector(`.gallery-section`)
+            elOtherSection2 = document.querySelector(`.saved-section`)
+            break
+        case ('saved'):
+            elOtherSection1 = document.querySelector(`.editor-section`)
+            elOtherSection2 = document.querySelector(`.gallery-section`)
+            break
     }
 
     const elCurrSection = document.querySelector(`.${section}-section`)
@@ -53,7 +63,8 @@ function onChangeToSection(section) {
 
     gCurrDisplay = section
     elCurrSection.style.display = 'grid' 
-    elPrevSection.style.display = 'none'
+    elOtherSection1.style.display = 'none'
+    elOtherSection2.style.display = 'none'
 
     if (document.body.classList.contains('menu-open')) document.body.classList.remove('menu-open')
 }
