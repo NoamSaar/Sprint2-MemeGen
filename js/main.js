@@ -13,6 +13,7 @@ function onInit() {
 
     renderSavedMemes()
     renderGallery()
+    renderFilterSizes()
     createDataList()
     resizeCanvas()
 

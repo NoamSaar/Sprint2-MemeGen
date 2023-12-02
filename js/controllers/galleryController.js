@@ -3,7 +3,7 @@
 function createDataList() {
     const imageDataList = document.getElementById('image-data-list')
     const images = getImages()
-    
+
     var uniqueKeywords = []
 
     images.forEach(img => {
@@ -19,7 +19,7 @@ function createDataList() {
 }
 
 function renderGallery() {
-    const images = getImages()
+    const images = getImagesToShow()
 
     var strHtml = images.map(img => `
         <img data-img-id="${img.id}" onclick="onImgSelect(${img.id})" src="${img.url}" alt="Gallery Image"></img>
@@ -28,6 +28,36 @@ function renderGallery() {
     document.querySelector('.images-container').innerHTML = strHtml
 }
 
+function renderFilterSizes() {
+    var sizes = getSizes()
+    console.log('sizes:', sizes)
+
+    if (!sizes) return
+
+    Object.entries(sizes).forEach(([filterName, size]) => {
+        var elFilter = document.querySelector(`.filter-${filterName}`)
+        if (elFilter) {
+            elFilter.style.fontSize = size + 'px'
+        }
+    })
+}
+
+function filterByCategory(filterBy) {
+    setFilterBy(filterBy)
+    renderGallery()
+}
+
+function onFilterClick(filter, name) {
+    const currFontSize = parseFloat(window.getComputedStyle(filter).fontSize)
+    console.log('currFontSize:', currFontSize)
+    const maxSize = 25
+
+    if (currFontSize < maxSize) {
+        const newSize = currFontSize + 0.2
+        filter.style.fontSize = newSize + 'px'
+        saveSizeToStorage(name, newSize)
+    }
+}
 
 function onImgSelect(imgId) {
     setImg(imgId)
@@ -94,8 +124,8 @@ function onImgInput(ev) {
 function loadImageFromInput(ev, onImageReady) {
     const reader = new FileReader()
     reader.onload = function (event) {
-        let img = new Image() 
-        img.src = event.target.result 
+        let img = new Image()
+        img.src = event.target.result
         img.onload = () => {
             setImg(onAddNewImg(img))
             onImageReady(img)
@@ -103,7 +133,7 @@ function loadImageFromInput(ev, onImageReady) {
             renderGallery()
         }
     }
-    reader.readAsDataURL(ev.target.files[0]) 
+    reader.readAsDataURL(ev.target.files[0])
 }
 
 function onAddNewImg(img) {
