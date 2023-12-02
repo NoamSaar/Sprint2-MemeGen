@@ -41,32 +41,36 @@ function toggleMenu() {
 }
 
 function onChangeToSection(section) {
-    var elOtherSection1
-    var elOtherSection2
+    var elSectionToHide1
+    var elSectionToHide2
+
+    const elEditor = document.querySelector(`.editor-section`)
+    const elGallery = document.querySelector(`.gallery-section`)
+    const elSaved = document.querySelector(`.saved-section`)
 
     switch (section) {
         case ('gallery'):
-            elOtherSection1 = document.querySelector(`.editor-section`)
-            elOtherSection2 = document.querySelector(`.saved-section`)
+            elSectionToHide1 = elEditor
+            elSectionToHide2 = elSaved
             break
         case ('editor'):
-            elOtherSection1 = document.querySelector(`.gallery-section`)
-            elOtherSection2 = document.querySelector(`.saved-section`)
+            elSectionToHide1 = elGallery
+            elSectionToHide2 = elSaved
             break
         case ('saved'):
-            elOtherSection1 = document.querySelector(`.editor-section`)
-            elOtherSection2 = document.querySelector(`.gallery-section`)
+            elSectionToHide1 = elEditor
+            elSectionToHide2 = elGallery
             break
     }
 
-    const elCurrSection = document.querySelector(`.${section}-section`)
+    const elSectionToDisplay = document.querySelector(`.${section}-section`)
 
-    if (elCurrSection.style.display === 'grid') return
+    if (elSectionToDisplay.style.display === 'grid') return
 
     gCurrDisplay = section
-    elCurrSection.style.display = 'grid'
-    elOtherSection1.style.display = 'none'
-    elOtherSection2.style.display = 'none'
+    elSectionToDisplay.style.display = 'grid'
+    elSectionToHide1.style.display = 'none'
+    elSectionToHide2.style.display = 'none'
 
     if (document.body.classList.contains('menu-open')) document.body.classList.remove('menu-open')
 }
