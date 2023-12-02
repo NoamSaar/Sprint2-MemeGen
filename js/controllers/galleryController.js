@@ -1,8 +1,21 @@
 'use strict'
 
-function initGallery() {
-    renderGallery(gImgs)
-    updateKeywordsList()
+function createDataList() {
+    const imageDataList = document.getElementById('image-data-list')
+    const images = getImages()
+    
+    var uniqueKeywords = []
+
+    images.forEach(img => {
+        img.keywords.forEach(keyword => {
+            if (!uniqueKeywords.includes(keyword)) {
+                uniqueKeywords.push(keyword)
+                var option = document.createElement('option')
+                option.value = keyword
+                imageDataList.appendChild(option)
+            }
+        })
+    })
 }
 
 function renderGallery() {
@@ -15,8 +28,10 @@ function renderGallery() {
     document.querySelector('.images-container').innerHTML = strHtml
 }
 
+
 function onImgSelect(imgId) {
     setImg(imgId)
+    renderMeme()
     onChangeToSection('editor')
 }
 

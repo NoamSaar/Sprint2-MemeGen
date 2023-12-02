@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 
 let gElCanvas
 let gCtx
@@ -12,8 +12,8 @@ function onInit() {
     addListeners()
 
     renderSavedMemes()
-    // initGallery()
     renderGallery()
+    createDataList()
     resizeCanvas()
 
     createMeme({ posX: gElCanvas.width / 2, posY: 50 })
