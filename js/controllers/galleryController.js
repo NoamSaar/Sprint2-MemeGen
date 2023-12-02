@@ -30,7 +30,6 @@ function renderGallery() {
 
 function renderFilterSizes() {
     var sizes = getSizes()
-    console.log('sizes:', sizes)
 
     if (!sizes) return
 
@@ -42,7 +41,7 @@ function renderFilterSizes() {
     })
 }
 
-function filterByCategory(filterBy) {
+function onFilterByCategory(filterBy) {
     setFilterBy(filterBy)
     renderGallery()
 }
@@ -57,6 +56,12 @@ function onFilterClick(filter, name) {
         filter.style.fontSize = newSize + 'px'
         saveSizeToStorage(name, newSize)
     }
+}
+
+function onInputFilter() {
+    var searchInput = document.getElementById('searchInput').value.toLowerCase()
+    setFilterBy(searchInput)
+    renderGallery()
 }
 
 function onImgSelect(imgId) {

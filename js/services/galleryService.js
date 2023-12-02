@@ -8,10 +8,9 @@ function getImages() {
 
 function getImagesToShow() {
     return gImgs.filter(img => {
-        if (!gFilterBy) {
-            return true
-        }
-        return img.keywords.includes(gFilterBy);
+        if (!gFilterBy) return true
+
+        return img.keywords.some(keyword => keyword.toLowerCase().includes(gFilterBy.toLowerCase()))
     })
 }
 

@@ -134,14 +134,14 @@
                 <datalist id="image-data-list"></datalist>
 
                 <div class="image-filter grid column">
-                    <article class="filter-all" onclick="filterByCategory('tv'); onFilterClick(this, 'tv')">TV</article>
-                    <article class="filter-square" onclick="filterByCategory('square'); onFilterClick(this, 'square')">Square</article>
-                    <article class="filter-dogs" onclick="filterByCategory('dogs'); onFilterClick(this, 'dogs')">Dogs</article>
-                    <article class="filter-man" onclick="filterByCategory('man'); onFilterClick(this, 'man')">Man</article>
-                    <article class="filter-mood" onclick="filterByCategory('mood'); onFilterClick(this, 'mood')">Mood</article>
+                    <article class="filter-all" onclick="onFilterByCategory('tv'); onFilterClick(this, 'tv')">TV</article>
+                    <article class="filter-square" onclick="onFilterByCategory('square'); onFilterClick(this, 'square')">Square</article>
+                    <article class="filter-dogs" onclick="onFilterByCategory('dogs'); onFilterClick(this, 'dogs')">Dogs</article>
+                    <article class="filter-man" onclick="onFilterByCategory('man'); onFilterClick(this, 'man')">Man</article>
+                    <article class="filter-mood" onclick="onFilterByCategory('mood'); onFilterClick(this, 'mood')">Mood</article>
                 </div>
 
-                <button class="btn-no-filter" onclick="filterByCategory('all')">All</button>
+                <button class="btn-no-filter" onclick="onFilterByCategory('all')">All</button>
 
                 <button class="btn-filter-options" onclick="toggleMoreFilters()">More</button>
             </div>
