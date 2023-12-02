@@ -1,12 +1,16 @@
 'use strict'
 
-function renderMeme(color = 'white') {
+let isDrawingImage = false
+
+function renderMeme() {
     const meme = getMeme()
     drawImage(meme.selectedImgId)
+}
 
+function drawLines(meme, color = 'white') {
     meme.lines.forEach((line, idx) => {
-
         drawText(line.txt, line.size, line.position.x, line.position.y)
+
         if (idx === getSelectedLineIdx()) {
             gCtx.strokeStyle = color
             gCtx.strokeRect(
@@ -20,15 +24,32 @@ function renderMeme(color = 'white') {
 }
 
 function drawImage(imgId) {
-    const elImg = new Image()
+    if (isDrawingImage) {
+        return
+    }
 
+    isDrawingImage = true
+
+    const elImg = new Image()
     const imgs = getImages()
     const { url } = imgs[imgId - 1]
+
     elImg.src = url
     
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
+        isDrawingImage = false
+        // renderMeme()
     }
+}
+
+function coverCanvasWithImg(elImg) {
+    gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+
+    const meme = getMeme()
+    drawLines(meme)
+    // renderMeme()
 }
 
 function drawText(text, size, x, y) {
@@ -111,13 +132,6 @@ function onSetFillColor(color, lineIdx = 0) {
 
 function onSetStrokeColor(color, lineIdx = 0) {
     setStrokeColor(color, lineIdx)
-    renderMeme()
-}
-
-function coverCanvasWithImg(elImg) {
-    gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-
     renderMeme()
 }
 
