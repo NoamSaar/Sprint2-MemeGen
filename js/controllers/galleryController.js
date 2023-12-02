@@ -22,7 +22,9 @@ function renderGallery() {
     const images = getImagesToShow()
 
     var strHtml = images.map(img => `
-        <img data-img-id="${img.id}" onclick="onImgSelect(${img.id})" src="${img.url}" alt="Gallery Image"></img>
+        <div class="cell">
+            <img data-img-id="${img.id}" onclick="onImgSelect(${img.id})" src="${img.url}" alt="Gallery Image"></img>
+        </div>
     `).join('')
 
     document.querySelector('.images-container').innerHTML = strHtml
@@ -63,8 +65,6 @@ function onInputFilter() {
     setFilterBy(searchInput)
     renderGallery()
 }
-
-
 
 function createSelectMenu() {
     var displayedKeywords = getDisplayedKeywords()
