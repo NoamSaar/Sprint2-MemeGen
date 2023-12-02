@@ -83,7 +83,6 @@ function createSelectMenu() {
         elSelectElement.appendChild(optionElement)
     })
 
-    // Optional: Add an event listener to handle the selection if needed
     elSelectElement.addEventListener('change', function (event) {
         var selectedKeyword = event.target.value
         setFilterBy(selectedKeyword)
@@ -94,7 +93,6 @@ function getDisplayedKeywords() {
     var displayedKeywords = []
 
     var elFilterArticles = document.querySelectorAll('.image-filter article')
-    console.log('elFilterArticles:', elFilterArticles)
 
     elFilterArticles.forEach(article => {
         var keyword = article.textContent.toLowerCase()
@@ -197,4 +195,3 @@ function coverCanvasWithImg(elImg) {
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
-

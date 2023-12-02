@@ -3,24 +3,10 @@
 let gFillColor = 'white'
 let gStrokeColor = 'black'
 let gFontSize = 40
-let gFontFamily = 'myImpact'
+let gFontFamily = 'Impact'
 
 let gSelectedLineIdx = 0
 let gMeme
-
-
-
-// var gImgs = []
-
-// createImgs()
-
-// function createImgs() {
-//     for (var i = 1; i <= 39; i++) {
-//         var imgUrl = 'img/' + i + '.jpg'
-//         var imgObj = { id: i, url: imgUrl, keywords: [] }
-//         gImgs.push(imgObj)
-//     }
-// }
 
 function createMeme(pos) {
     const { posX, posY } = pos
@@ -134,8 +120,8 @@ function changeFontFamily(fontFamily) {
     if (lines.length === 0) return
 
     const selectedLine = lines[gSelectedLineIdx]
-
-    selectedLine.fontFamily = (fontFamily === 'myImpact') ? 'myImpact' : fontFamily
+    
+    selectedLine.fontFamily = (fontFamily === 'Impact') ? 'myImpact' : fontFamily
     gFontFamily = fontFamily
 }
 

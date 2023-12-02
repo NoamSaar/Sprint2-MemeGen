@@ -62,7 +62,6 @@ function getAllKeywords() {
     return allKeywords
 }
 
-
 function getImagesToShow() {
     return gImgs.filter(img => {
         if (!gFilterBy) return true

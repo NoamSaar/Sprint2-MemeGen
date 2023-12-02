@@ -7,22 +7,6 @@ function renderMeme() {
     drawImage(meme.selectedImgId)
 }
 
-function drawLines(meme, color = 'white') {
-    meme.lines.forEach((line, idx) => {
-        drawText(line.txt, line.size, line.position.x, line.position.y)
-
-        if (idx === getSelectedLineIdx()) {
-            gCtx.strokeStyle = color
-            gCtx.strokeRect(
-                line.position.x - gCtx.measureText(line.txt).width / 2,
-                line.position.y - line.size / 2,
-                gCtx.measureText(line.txt).width,
-                line.size
-            )
-        }
-    })
-}
-
 function drawImage(imgId) {
     if (isDrawingImage) {
         return
@@ -39,7 +23,6 @@ function drawImage(imgId) {
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
         isDrawingImage = false
-        // renderMeme()
     }
 }
 
@@ -49,14 +32,31 @@ function coverCanvasWithImg(elImg) {
 
     const meme = getMeme()
     drawLines(meme)
-    // renderMeme()
+}
+
+function drawLines(meme, color = 'white') {
+    meme.lines.forEach((line, idx) => {
+        drawText(line.txt, line.size, line.position.x, line.position.y)
+
+        if (idx === getSelectedLineIdx()) {
+            gCtx.strokeStyle = color
+            gCtx.strokeRect(
+                line.position.x - gCtx.measureText(line.txt).width / 2,
+                line.position.y - line.size / 2,
+                gCtx.measureText(line.txt).width,
+                line.size
+            )
+        }
+    })
 }
 
 function drawText(text, size, x, y) {
+    const fontFamily = getFontFamily()
+
     gCtx.lineWidth = 2
     gCtx.strokeStyle = getStrokeColor()
     gCtx.fillStyle = getFillColor()
-    gCtx.font = `${size}px ${getFontFamily()}`
+    gCtx.font = `${size}px ${fontFamily}` 
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
@@ -174,39 +174,26 @@ function setColor(color, type) {
 }
 
 function onUploadImg() {
-    // Gets the image from the canvas
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg') 
 
     function onSuccess(uploadedImgUrl) {
-        // Handle some special characters
         const url = encodeURIComponent(uploadedImgUrl)
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
     }
     
-    // Send the image to the server
     doUploadImg(imgDataUrl, onSuccess)
 }
 
-// Upload the image to a server, get back a URL 
-// call the function onSuccess when done
 function doUploadImg(imgDataUrl, onSuccess) {
-    // Pack the image for delivery
     const formData = new FormData()
     formData.append('img', imgDataUrl)
 
-    // Send a post req with the image to the server
     const XHR = new XMLHttpRequest()
     XHR.onreadystatechange = () => {
-        // If the request is not done, we have no business here yet, so return
         if (XHR.readyState !== XMLHttpRequest.DONE) return
-        // if the response is not ok, show an error
         if (XHR.status !== 200) return console.error('Error uploading image')
         const { responseText: url } = XHR
-        // Same as
-        // const url = XHR.responseText
-
-        // If the response is ok, call the onSuccess callback function, 
-        // that will create the link to facebook using the url we got
+        
         console.log('Got back live url:', url)
         onSuccess(url)
     }

@@ -14,12 +14,13 @@ function onInit() {
     renderSavedMemes()
     renderGallery()
     renderFilterSizes()
+
     createSelectMenu()
     createDataList()
+    
     resizeCanvas()
-
     createMeme({ posX: gElCanvas.width / 2, posY: 50 })
-
+    
     renderMeme()
     renderTxtInput()
 
