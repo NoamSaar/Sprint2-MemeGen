@@ -64,6 +64,46 @@ function onInputFilter() {
     renderGallery()
 }
 
+
+
+function createSelectMenu() {
+    var displayedKeywords = getDisplayedKeywords()
+    const remainingKeywords = getRemainingKeywords(displayedKeywords)
+
+    if (!remainingKeywords.length) return
+
+    var elSelectElement = document.querySelector('select[name="filter-options"]')
+
+    elSelectElement.innerHTML = ''
+
+    remainingKeywords.forEach(keyword => {
+        var optionElement = document.createElement('option')
+        optionElement.value = keyword
+        optionElement.textContent = keyword
+        elSelectElement.appendChild(optionElement)
+    })
+
+    // Optional: Add an event listener to handle the selection if needed
+    elSelectElement.addEventListener('change', function (event) {
+        var selectedKeyword = event.target.value
+        setFilterBy(selectedKeyword)
+    })
+}
+
+function getDisplayedKeywords() {
+    var displayedKeywords = []
+
+    var elFilterArticles = document.querySelectorAll('.image-filter article')
+    console.log('elFilterArticles:', elFilterArticles)
+
+    elFilterArticles.forEach(article => {
+        var keyword = article.textContent.toLowerCase()
+        displayedKeywords.push(keyword)
+    })
+
+    return displayedKeywords
+}
+
 function onImgSelect(imgId) {
     setImg(imgId)
     renderMeme()

@@ -143,7 +143,7 @@
 
                 <button class="btn-no-filter" onclick="onFilterByCategory('all')">All</button>
 
-                <button class="btn-filter-options" onclick="toggleMoreFilters()">More</button>
+                <select name="filter-options" onchange="onFilterByCategory(this.value)"></select>
             </div>
 
             <section class="img-selection">
@@ -162,6 +162,7 @@
         </section>
 
         <section class="about-section"></section>
+        <!-- <div class="filter-modal border-redius"></div> -->
     </main>
 
     <script src="js/services/utilService.js"></script>

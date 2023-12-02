@@ -14,6 +14,7 @@ function onInit() {
     renderSavedMemes()
     renderGallery()
     renderFilterSizes()
+    createSelectMenu()
     createDataList()
     resizeCanvas()
 
