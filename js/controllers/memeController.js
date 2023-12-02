@@ -22,7 +22,10 @@ function renderMeme(color = 'white') {
 function drawImage(imgId) {
     const elImg = new Image()
 
-    elImg.src = `./img/${imgId}.jpg`
+    const imgs = getImages()
+    const { url } = imgs[imgId - 1]
+    elImg.src = url
+    
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
     }
@@ -120,7 +123,6 @@ function coverCanvasWithImg(elImg) {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-
     gElCanvas.width = elContainer.clientWidth - 1
 }
 

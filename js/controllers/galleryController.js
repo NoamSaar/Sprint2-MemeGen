@@ -70,3 +70,41 @@ function updateKeywordsList() {
         datalist.appendChild(option);
     });
 }
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImg)
+    onChangeToSection('editor')
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+    reader.onload = function (event) {
+        let img = new Image() 
+        img.src = event.target.result 
+        img.onload = () => {
+            setImg(onAddNewImg(img))
+            onImageReady(img)
+            onSelectImg(img)
+            renderGallery()
+        }
+    }
+    reader.readAsDataURL(ev.target.files[0]) 
+}
+
+function onAddNewImg(img) {
+    return addNewImg(img)
+}
+
+function renderImg(img) {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width - 1, gElCanvas.height - 1)
+}
+
+function onSelectImg(elImg) {
+    coverCanvasWithImg(elImg)
+}
+
+function coverCanvasWithImg(elImg) {
+    gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+}
+

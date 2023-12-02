@@ -64,6 +64,7 @@
 
 .gallery-section .images-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
     align-items: center;
     justify-items: center;
     grid-auto-flow: dense;
@@ -73,6 +74,8 @@
 
 .gallery-section img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 15px;
     cursor: pointer;
 }

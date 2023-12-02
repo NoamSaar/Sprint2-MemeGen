@@ -29,3 +29,15 @@ function removeSavedMeme(index) {
 function loadMemeForEditing(memeToEdit) {
     gMeme = memeToEdit
 }
+
+function addNewImg(img) {
+    const newImgObj = {
+        id: gImgs.length + 1,
+        url: img.src,
+        keywords: [],
+    }
+
+    gImgs.push(newImgObj)
+    console.log('newImgObj.id:', newImgObj.id)
+    return newImgObj.id
+}
