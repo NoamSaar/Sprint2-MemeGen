@@ -54,6 +54,8 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
+    if (gMeme.selectedLineIdx === -1) return
+
     const { isDrag } = gMeme.lines[gMeme.selectedLineIdx]
     if (!isDrag) return
 
@@ -75,6 +77,7 @@ function onUp() {
 }
 
 function setLineDrag(isDrag, lineIdx) {
+    if (lineIdx === -1) return
     gMeme.lines[lineIdx].isDrag = isDrag
 }
 
