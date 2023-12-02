@@ -143,7 +143,10 @@
                 <button class="btn-filter-options">More</button>
             </div>
 
-            <button class="flexible" onclick="onFlexibleMode()">I'm Flexible</button>
+            <section class="img-selection">
+                <button class="flexible" onclick="onFlexibleMode()">I'm Flexible</button>
+                <input type="file" class="file-input" name="image" onchange="onImgInput(event)" accept="image/*" />
+            </section>
 
             <div class="images-container grid"></div>
         </section>
