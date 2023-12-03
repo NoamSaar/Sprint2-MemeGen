@@ -24,11 +24,24 @@ function renderDataList() {
 function renderGallery() {
     const imgs = getImgsToShow()
 
-    var strHtml = imgs.map(img => `
+    var strHtml = `
+        <div class="cell">
+            <button title="Flexible Mode" class="flexible" onclick="onFlexibleMode()">Random Image</button>
+        </div>
+        <div class="cell">
+            <label for="imgInput" class="file-input-label">
+                <div class="upload-icon">Choose File</div>
+                <input type="file" id="imgInput" class="file-input" name="img" onchange="onChangeImgInput(event)" accept="image/*" style="display: none;" />
+            </label>
+        </div>
+    `
+    const imgMap = imgs.map(img => `
         <div class="cell">
             <img data-img-id="${img.id}" onclick="onImgSelect(${img.id})" src="${img.url}" alt="Gallery Img"></img>
         </div>
-    `).join('')
+    `).join('')  
+
+    strHtml += imgMap
 
     document.querySelector('.imgs-container').innerHTML = strHtml
 }

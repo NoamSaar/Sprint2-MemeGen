@@ -1,11 +1,11 @@
 .gallery-section {
     display: none;
-    background-color: var( --clrPrimary1);
+    background-color: var(--clrPrimary1);
     border-radius: 10px;
     margin-block-end: 20px;
 }
 
-.gallery-section > * {
+.gallery-section>* {
     padding: 20px;
 }
 
@@ -17,7 +17,7 @@
 .gallery-section input {
     padding-block: 12px;
     padding-inline-start: 30px;
-    font-family: poppinsLight ,sans-serif;
+    font-family: poppinsLight, sans-serif;
     font-size: 1rem;
     color: var(--clrInputFont);
     background: var(--clrPrimaryBase);
@@ -33,40 +33,40 @@
     font-size: .8rem;
 
     background-color: gray;
-    border-radius: 50px; 
+    border-radius: 50px;
 }
 
-.gallery-section .img-filter > *{
+.gallery-section .img-filter>* {
     cursor: pointer;
 }
 
-.gallery-section button, .select-filter{
+.gallery-section button, .select-filter, .file-input-label {
     border-radius: 50px;
     padding: 5px 20px;
     border: none;
-    font-family: poppinsLight ,sans-serif;
+    font-family: poppinsLight, sans-serif;
     font-size: 1rem;
     color: var(--clrHeaderFont);
-    background: var( --clrSecondary);
+    background: var(--clrSecondary);
     cursor: pointer;
 }
 
-.gallery-section .img-selection > * {
+.gallery-section .img-selection>* {
     cursor: pointer;
     justify-self: center;
 }
 
-.gallery-section .img-selection{
+.gallery-section .img-selection {
     display: grid;
     gap: 10px;
 }
 
-.gallery-section .img-selection button{
+.gallery-section .img-selection button {
     grid-column: 1 / 3;
     align-self: center;
 }
 
-.gallery-section .img-selection input{
+.gallery-section .img-selection input {
     grid-row: 2;
 }
 
@@ -92,6 +92,27 @@
     cursor: pointer;
 }
 
+.gallery-section .cell button,
+.file-input-label {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.gallery-section .file-input-label {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gallery-section .file-input-label .upload-icon{
+    text-align: center;
+    line-height: 100px;
+}
+
 @media (max-width: 680px) {
     .gallery-section {
         margin-block: 15px;
@@ -100,13 +121,14 @@
     .gallery-section .imgs-container {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
-    
+
     .gallery-section .search-section {
         grid-auto-flow: row;
         grid-template-columns: 1fr 1fr;
     }
 
-    .gallery-section input, .img-filter {
+    .gallery-section input,
+    .img-filter {
         grid-column: 1 / 3;
     }
 
@@ -127,10 +149,9 @@
     .gallery-section .img-selection button {
         justify-self: center;
     }
-    
+
     .gallery-section .img-selection input {
         justify-self: center;
         grid-row: 1;
     }
 }
-
