@@ -39,7 +39,7 @@ function renderGallery() {
         <div class="cell">
             <img data-img-id="${img.id}" onclick="onImgSelect(${img.id})" src="${img.url}" alt="Gallery Img"></img>
         </div>
-    `).join('')  
+    `).join('')
 
     strHtml += imgMap
 
@@ -128,6 +128,12 @@ function onInputFilter(value) {
             return
         }
     })
+
+    if (value.trim() === '') {
+        imgDataList.style.display = 'none'
+    } else {
+        imgDataList.style.display = 'block'
+    }
 
     const searchInput = value.toLowerCase()
     setFilterBy(searchInput)
@@ -271,7 +277,7 @@ function onDown(ev) {
         gSelectedLineIdx = clickedLineIdx
 
         gStartPos = clickedPos
-        document.body.style.cursor = 'grabbing'
+        document.querySelector('.canvas-container').style.cursor = 'grabbing'
     }
 }
 
@@ -294,7 +300,7 @@ function onMove(ev) {
 
 function onUp() {
     setLineDrag(false, gMeme.selectedLineIdx)
-    document.body.style.cursor = 'grab'
+    document.querySelector('.canvas-container').style.cursor = 'grab'
     gMeme.selectedLineIdx = -1
 }
 

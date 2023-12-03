@@ -101,14 +101,16 @@
                 </div>
 
                 <div class="actions grid column">
-                    <button title="Share Image" onclick="onUploadImg()" class="border-redius btn-share flex justify-center align-center">
-                        <img src="./SVG/Share.svg" alt="share-icon">
-                        Share
-                    </button>
                     <button title="Save Image" onclick="onSaveToMemeSection()" class="btn-save border-redius flex justify-center align-center">
                         <img src="./SVG/+.svg" alt="save-icon">
                         Save
                     </button>
+
+                    <button title="Share Image" onclick="onUploadImg()" class="border-redius btn-share flex justify-center align-center">
+                        <img src="./SVG/Share.svg" alt="share-icon">
+                        Share
+                    </button>
+
                     <a title="Download Image" class="border-redius btn-download flex justify-center align-center" href="#"
                         onclick="onDownloadCanvas(this)" download="file-name">
                         <img src="./SVG/Download.svg" alt="download-icon"><span>Download</span>
@@ -121,7 +123,7 @@
 
         <section class="gallery-section">
             <div class="search-section grid align-center">
-                <input oninput="onInputFilter(this.value)" type="search" id="img-search" class="search-input" list="img-data" placeholder="Search...">
+                <input oninput="onInputFilter(this.value)" type="search" class="search-input" list="img-data" placeholder="Search...">
                 <datalist id="img-data" class="img-data-list"></datalist>
 
                 <div class="img-filter grid column">

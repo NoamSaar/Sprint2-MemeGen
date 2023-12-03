@@ -55,7 +55,7 @@
 }
 
 .editor-container img {
-    scale: .8;
+    scale: .7;
 }
 
 .editor-container .line-editors {
@@ -127,8 +127,8 @@
 
 .editor-container .actions {
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
     gap: 1rem;
-
 }
 
 .editor-container .actions button {
@@ -142,14 +142,19 @@
     margin-inline-end: 10px;
 }
 
+.editor-container .actions > * {
+    height: 3rem;
+    padding: 10px;
+}
+
 .editor-container .actions .btn-share {
     background-color: #1e7cd3;
-    box-shadow: 0 3px 0 0 #155ea2, inset #8baac7a4 -1px 3.5px 0 0;
+    box-shadow: 0 3px 0 0 #155ea2;
 }
 
 .editor-container .actions .btn-download {
     background-color: #8f44bb;
-    box-shadow: 0 3px 0 0 #50236b, inset #ac9bb679 -1px 4px 0 0;
+    box-shadow: 0 3px 0 0 #50236b;
 }
 
 .editor-container .actions a {
@@ -164,7 +169,7 @@
 
 .editor-container .actions .btn-save {
     background-color: #b22d13;
-    box-shadow: 0 3px 0 0 #7c1d0a, inset #c691877c -1px 3.5px 0 0;
+    box-shadow: 0 3px 0 0 #7c1d0a;
 }
 
 .editor-section .user-msg {
