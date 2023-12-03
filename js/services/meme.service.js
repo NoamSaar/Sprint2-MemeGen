@@ -85,7 +85,7 @@ function addNewLine(pos) {
 }
 
 function switchLine() {
-    const { lines } = gMeme
+    const lines = _getLinesFromModel()
 
     if (lines.length <= 1) return
 
@@ -93,7 +93,7 @@ function switchLine() {
 }
 
 function deleteLine() {
-    const { lines } = gMeme
+    const lines = _getLinesFromModel()
 
     if (lines.length <= 1) return
 
@@ -105,19 +105,19 @@ function deleteLine() {
 }
 
 function changeFontSize(diff) {
-    const { lines } = gMeme
+    const lines = _getLinesFromModel()
 
-    if (lines.length === 0) return
+    if (!lines) return
 
     const selectedLine = lines[gSelectedLineIdx]
 
-    selectedLine.size = Math.min(100, Math.max(20, selectedLine.size + diff));
+    selectedLine.size = Math.min(100, Math.max(20, selectedLine.size + diff))
 }
 
 function changeFontFamily(fontFamily) {
-    const { lines } = gMeme
+    const lines = _getLinesFromModel()
 
-    if (lines.length === 0) return
+    if (!lines) return
 
     const selectedLine = lines[gSelectedLineIdx]
     
@@ -159,7 +159,7 @@ function setTextAlignment(align) {
 
 // private functions
 function _updateMeme(txt, lineIdx) {
-    const { lines } = gMeme
+    const lines = _getLinesFromModel()
 
     if (lines.length > 0 && lineIdx >= 0 && lineIdx < lines.length) {
         lines[lineIdx].txt = txt
@@ -169,8 +169,25 @@ function _updateMeme(txt, lineIdx) {
             size: 40,
             color: 'black'
         })
-        gSelectedLineIdx = gMeme.lines.length - 1;
+        gSelectedLineIdx = gMeme.lines.length - 1
     }
 
     return gMeme
+}
+
+function _getLinesFromModel() {
+    const { lines } = gMeme
+
+    if (!lines.length) return null
+    else return lines
+}
+
+function _setLineDrag(isDrag, lineIdx) {
+    if (lineIdx === -1) return
+    gMeme.lines[lineIdx].isDrag = isDrag
+}
+
+function _moveLine(lineIdx, dx, dy) {
+    gMeme.lines[lineIdx].position.x += dx
+    gMeme.lines[lineIdx].position.y += dy
 }

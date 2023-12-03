@@ -107,6 +107,14 @@
     gap: 15px;
 }
 
+.editor-container .text-editors > * {
+    cursor: pointer;
+}
+
+.editor-container .line-editors > * {
+    cursor: pointer;
+}
+
 .editor-container .text-editors select {
     grid-column: 1 / 4;
     align-self: stretch;

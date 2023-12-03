@@ -1,28 +1,38 @@
 'use strict'
 
-let isDrawingImage = false
+let isDrawingImg = false
 
 function renderMeme() {
     const meme = getMeme()
-    drawImage(meme.selectedImgId)
+    drawImg(meme.selectedImgId)
 }
 
-function drawImage(imgId) {
-    if (isDrawingImage) {
+function renderTxtInput() {
+    const elTxtInput = document.querySelector('input[type="text"]')
+
+    const { lines } = getMeme()
+    const currLine = getSelectedLineIdx()
+    const currTxt = lines[currLine].txt
+
+    elTxtInput.value = currTxt
+}
+
+function drawImg(imgId) {
+    if (isDrawingImg) {
         return
     }
 
-    isDrawingImage = true
+    isDrawingImg = true
 
     const elImg = new Image()
-    const imgs = getImages()
+    const imgs = getImgs()
     const { url } = imgs[imgId - 1]
 
     elImg.src = url
     
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
-        isDrawingImage = false
+        isDrawingImg = false
     }
 }
 
@@ -61,16 +71,6 @@ function drawText(text, size, x, y) {
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
-}
-
-function renderTxtInput() {
-    const elTxtInput = document.querySelector('input[type="text"]')
-
-    const { lines } = getMeme()
-    const currLine = getSelectedLineIdx()
-    const currTxt = lines[currLine].txt
-
-    elTxtInput.value = currTxt
 }
 
 function onAddNewLine() {
@@ -140,22 +140,8 @@ function resizeCanvas() {
     gElCanvas.width = elContainer.clientWidth - 1
 }
 
-function onDownloadCanvas(elLink) {
-    const originalStrokeStyle = gCtx.strokeStyle
-    gCtx.strokeStyle = 'transparent'
-    renderMeme('transparent')
-    
-    const dataUrl = gElCanvas.toDataURL()
-
-    gCtx.strokeStyle = originalStrokeStyle
-    renderMeme(originalStrokeStyle)
-
-    elLink.href = dataUrl
-    elLink.download = 'my-img'
-}
-
 function onOpenColorPicker(type) {
-    const colorPicker = document.createElement('input');
+    const colorPicker = document.createElement('input')
     colorPicker.type = 'color'
 
     colorPicker.addEventListener('input', function() {
@@ -171,6 +157,21 @@ function setColor(color, type) {
     } else if (type === 'stroke') {
         onSetStrokeColor(color)
     }
+}
+
+// SHARE AND DOWNLOAD IMG
+function onDownloadCanvas(elLink) {
+    const originalStrokeStyle = gCtx.strokeStyle
+    gCtx.strokeStyle = 'transparent'
+    renderMeme('transparent')
+    
+    const dataUrl = gElCanvas.toDataURL()
+
+    gCtx.strokeStyle = originalStrokeStyle
+    renderMeme(originalStrokeStyle)
+
+    elLink.href = dataUrl
+    elLink.download = 'my-img'
 }
 
 function onUploadImg() {

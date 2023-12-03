@@ -14,19 +14,19 @@
 
         <nav class="main-nav flex ">
             <ul class="main-nav-list clean-list">
-                <li onclick="onChangeToSection(this.getAttribute('value'))" value="gallery">
+                <li onclick="onChangeToSection(this.dataset.value)" data-value="gallery">
                     <a class="main-nav-item" href="#">Gallery</a>
                 </li>
-                <li onclick="onChangeToSection(this.getAttribute('value'))" value="editor">
+                <li onclick="onChangeToSection(this.dataset.value)" data-value="editor">
                     <a class="main-nav-item" href="#">Editor</a>
                 </li>
-                <li onclick="onChangeToSection(this.getAttribute('value'))" value="saved">
+                <li onclick="onChangeToSection(this.dataset.value)" data-value="meme">
                     <a class="main-nav-item" href="#">Saved</a>
                 </li>
             </ul>
-
         </nav>
-        <button class="btn-toggle-menu" onclick="toggleMenu()">
+
+        <button class="btn-toggle-menu" onclick="onToggleMenu()">
             <div class="hamburger-lines">
                 <span class="line line1"></span>
                 <span class="line line2"></span>
@@ -111,7 +111,7 @@
                         <img src="./SVG/Share.svg" alt="share-icon">
                         Share
                     </button>
-                    <button onclick="onSaveToSaved()" class="btn-save border-redius flex justify-center align-center">
+                    <button onclick="onSaveToMemeSection" class="btn-save border-redius flex justify-center align-center">
                         <img src="./SVG/+.svg" alt="save-icon">
                         save
                     </button>
@@ -125,10 +125,11 @@
 
         <section class="gallery-section">
             <div class="search-section grid align-center">
-                <input oninput="onInputFilter()" type="text" id="searchInput" list="imageList" placeholder="Search...">
-                <datalist id="image-data-list"></datalist>
+                <input oninput="onInputFilter(this.value)" type="search" class="search-input" list="img-list" placeholder="Search...">
+                
+                <datalist class="img-data-list"></datalist>
 
-                <div class="image-filter grid column">
+                <div class="img-filter grid column">
                     <article class="filter-all" onclick="onFilterByCategory('tv'); onFilterClick(this, 'tv')">TV</article>
                     <article class="filter-square" onclick="onFilterByCategory('square'); onFilterClick(this, 'square')">Square</article>
                     <article class="filter-dogs" onclick="onFilterByCategory('dogs'); onFilterClick(this, 'dogs')">Dogs</article>
@@ -136,27 +137,25 @@
                     <article class="filter-mood" onclick="onFilterByCategory('mood'); onFilterClick(this, 'mood')">Mood</article>
                 </div>
 
-                <button class="btn-no-filter" onclick="onFilterByCategory('all')">All</button>
+                <button class="btn-clear-filter" onclick="onFilterByCategory('all')">Clear</button>
 
                 <select class="select-filter" name="filter-options" onchange="onFilterByCategory(this.value)"></select>
             </div>
 
             <section class="img-selection">
                 <button class="flexible" onclick="onFlexibleMode()">I'm Flexible</button>
-                <input type="file" class="file-input" name="image" onchange="onImgInput(event)" accept="image/*" />
+                <input type="file" class="file-input" name="img" onchange="onChangeImgInput(event)" accept="img/*" />
             </section>
 
-            <div class="images-container grid"></div>
+            <div class="imgs-container grid"></div>
         </section>
 
-        <section class="saved-section">
+        <section class="meme-section">
             <div class="no-saved" onclick="onChangeToSection('gallery')">
                 New Meme
                 <img class="icon" src="./SVG/+.svg" alt="add-icon">
             </div>
         </section>
-
-        <section class="about-section"></section>
     </main>
 
     <!-- SERVICES -->
@@ -167,7 +166,6 @@
     <!-- CONTROLLERS -->
     <script src="js/controllers/gallery.controller.js"></script>
     <script src="js/controllers/meme.controller.js"></script>
-    <script src="js/controllers/event.controller.js"></script>
     <script src="js/controllers/main.controller.js"></script>
 </body>
 

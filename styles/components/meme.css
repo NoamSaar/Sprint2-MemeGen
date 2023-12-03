@@ -1,4 +1,4 @@
-.saved-section {
+.meme-section {
     display: none;
     background-color: var( --clrPrimary1);
     border-radius: 10px;
@@ -14,14 +14,14 @@
     gap: 20px
 }
 
-.saved-section img:not(.icon) {
+.meme-section img:not(.icon) {
     width: 100%;
 
     border-radius: 15px;
     cursor: pointer;
 }
 
-.saved-section .no-saved {
+.meme-section .no-meme {
     position: relative;
     padding: 10px;
 
@@ -35,7 +35,7 @@
     cursor: pointer;
 }
 
-.saved-section .no-saved img {
+.meme-section .no-meme img {
     position: absolute;
     top: 50%;
     left: 50%;

@@ -1,5 +1,7 @@
 'use strict'
 
+const STORAGE_KEY = 'savedMemes'
+
 var gImgs = [
     { id: 2, url: 'img/2.jpg', keywords: ['all', 'square', 'dogs', 'cute'] },
     { id: 1, url: 'img/1.jpg', keywords: ['all', 'square', 'trump', 'man'] },
@@ -44,30 +46,42 @@ var gImgs = [
 
 var gFilterBy = null
 
-function getImages() {
+function getImgs() {
     return gImgs
 }
 
 function getAllKeywords() {
-    var allKeywords = []
+    var uniqueKeywords = new Set()
 
     gImgs.forEach(img => {
         img.keywords.forEach(keyword => {
-            if (!allKeywords.includes(keyword.toLowerCase())) {
-                allKeywords.push(keyword.toLowerCase())
-            }
-        });
-    });
+            uniqueKeywords.add(keyword.toLowerCase())
+        })
+    })
 
-    return allKeywords
+    return Array.from(uniqueKeywords)
 }
 
-function getImagesToShow() {
+function getImgsToShow() {
     return gImgs.filter(img => {
         if (!gFilterBy) return true
 
         return img.keywords.some(keyword => keyword.toLowerCase().includes(gFilterBy.toLowerCase()))
     })
+}
+
+function getRemainingKeywords(displayedKeywords) {
+    const allKeywords = getAllKeywords()
+
+    return allKeywords.filter(keyword => !displayedKeywords.includes(keyword))
+}
+
+function getSavedMemes() {
+    return loadFromStorage(STORAGE_KEY) || []
+}
+
+function getFilterFontSizes() {
+    return loadFromStorage('filter_font_size')
 }
 
 function setFilterBy(filterBy) {
@@ -78,43 +92,7 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
-function saveSizeToStorage(filterName, size) {
-    var sizes = getSizes() || {}
-    sizes[filterName] = size
-    saveToStorage('sizes', sizes)
-}
-
-function getSizes() {
-    return loadFromStorage('sizes')
-}
-
-function getRemainingKeywords(displayedKeywords) {
-    const allKeywords = getAllKeywords()
-
-    return allKeywords.filter(keyword => !displayedKeywords.includes(keyword))
-}
-
-function saveMeme(meme) {
-    const savedMemes = getSavedMemes()
-    savedMemes.push(meme)
-    saveToStorage('savedMemes', savedMemes)
-}
-
-function getSavedMemes() {
-    return loadFromStorage('savedMemes') || []
-}
-
-function removeSavedMeme(index) {
-    const savedMemes = getSavedMemes()
-    savedMemes.splice(index, 1)
-    saveToStorage('savedMemes', savedMemes)
-}
-
-function loadMemeForEditing(memeToEdit) {
-    gMeme = memeToEdit
-}
-
-function addNewImg(img) {
+function createNewImg(img) {
     const newImgObj = {
         id: gImgs.length + 1,
         url: img.src,
@@ -125,3 +103,26 @@ function addNewImg(img) {
     console.log('newImgObj.id:', newImgObj.id)
     return newImgObj.id
 }
+
+function saveMeme(meme) {
+    const savedMemes = getSavedMemes()
+    savedMemes.push(meme)
+    saveToStorage(STORAGE_KEY, savedMemes)
+}
+
+function loadMemeForEditing(memeToEdit) {
+    gMeme = memeToEdit
+}
+
+// function removeSavedMeme(index) {
+//     const savedMemes = getSavedMemes()
+//     savedMemes.splice(index, 1)
+//     saveToStorage(STORAGE_KEY, savedMemes)
+// }
+
+function _saveFilterToStorage(filterName, fontSize) {
+    const filterFontSizes = getFilterFontSizes() || {}
+    filterFontSizes[filterName] = fontSize
+    saveToStorage('filter_font_size', filterFontSizes)
+}
+

@@ -12,10 +12,9 @@ function onInit() {
 
     renderSavedMemes()
     renderGallery()
-    renderFilterSizes()
-
-    createSelectMenu()
-    createDataList()
+    renderFilterFontSizes()
+    renderSelectMenu()
+    renderDataList()
     
     resizeCanvas()
     createMeme({ posX: gElCanvas.width / 2, posY: 50 })
@@ -38,7 +37,7 @@ function onInit() {
     })
 }
 
-function toggleMenu() {
+function onToggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
@@ -48,7 +47,7 @@ function onChangeToSection(section) {
 
     const elEditor = document.querySelector(`.editor-section`)
     const elGallery = document.querySelector(`.gallery-section`)
-    const elSaved = document.querySelector(`.saved-section`)
+    const elSaved = document.querySelector(`.meme-section`)
 
     switch (section) {
         case ('gallery'):
@@ -59,7 +58,7 @@ function onChangeToSection(section) {
             elSectionToHide1 = elGallery
             elSectionToHide2 = elSaved
             break
-        case ('saved'):
+        case ('meme'):
             elSectionToHide1 = elEditor
             elSectionToHide2 = elGallery
             break
