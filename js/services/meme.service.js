@@ -157,6 +157,16 @@ function setTextAlignment(align) {
     })
 }
 
+function setLineDrag(isDrag, lineIdx) {
+    if (lineIdx === -1) return
+    gMeme.lines[lineIdx].isDrag = isDrag
+}
+
+function moveLine(lineIdx, dx, dy) {
+    gMeme.lines[lineIdx].position.x += dx
+    gMeme.lines[lineIdx].position.y += dy
+}
+
 // private functions
 function _updateMeme(txt, lineIdx) {
     const lines = _getLinesFromModel()
@@ -180,14 +190,4 @@ function _getLinesFromModel() {
 
     if (!lines.length) return null
     else return lines
-}
-
-function _setLineDrag(isDrag, lineIdx) {
-    if (lineIdx === -1) return
-    gMeme.lines[lineIdx].isDrag = isDrag
-}
-
-function _moveLine(lineIdx, dx, dy) {
-    gMeme.lines[lineIdx].position.x += dx
-    gMeme.lines[lineIdx].position.y += dy
 }
