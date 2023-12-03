@@ -26,11 +26,11 @@ function renderGallery() {
 
     var strHtml = `
         <div class="cell">
-            <button title="Flexible Mode" class="flexible" onclick="onFlexibleMode()">Random Image</button>
+            <button title="Flexible Mode" class="flexible" onclick="onFlexibleMode()"><img src="img/random-removebg.jpg" alt="Random Icon"></img></button>
         </div>
         <div class="cell">
             <label for="imgInput" class="file-input-label">
-                <div class="upload-icon">Choose File</div>
+                <div class="upload-icon"><img src="img/upload4-removebg.jpg" alt="Upload Icon"></img></div>
                 <input type="file" id="imgInput" class="file-input" name="img" onchange="onChangeImgInput(event)" accept="image/*" style="display: none;" />
             </label>
         </div>
