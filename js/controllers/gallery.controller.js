@@ -52,7 +52,7 @@ function renderFilterFontSizes() {
     if (!filterFontSizes) return
 
     Object.entries(filterFontSizes).forEach(([filterName, size]) => {
-        var elFilter = document.querySelector(`.filter-${filterName}`)
+        const elFilter = document.querySelector(`.filter-${filterName}`)
         if (elFilter) {
             elFilter.style.fontSize = size + 'px'
         }
@@ -60,24 +60,25 @@ function renderFilterFontSizes() {
 }
 
 function renderSelectMenu() {
-    var displayedKeywords = getDisplayedKeywords()
+    const displayedKeywords = getDisplayedKeywords()
     const remainingKeywords = getRemainingKeywords(displayedKeywords)
 
     if (!remainingKeywords.length) return
 
-    var elSelectElement = document.querySelector('select[name="filter-options"]')
+    const elSelectElement = document.querySelector('select[name="filter-options"]')
 
     elSelectElement.innerHTML = ''
 
     remainingKeywords.forEach(keyword => {
-        var optionElement = document.createElement('option')
-        optionElement.value = keyword
-        optionElement.textContent = keyword
+        const optionElement = document.createElement('option')
+        const capitalizedKeyword = keyword.charAt(0).toUpperCase() + keyword.slice(1)
+        optionElement.value = capitalizedKeyword
+        optionElement.textContent = capitalizedKeyword
         elSelectElement.appendChild(optionElement)
     })
 
     elSelectElement.addEventListener('change', function (event) {
-        var selectedKeyword = event.target.value
+        const selectedKeyword = event.target.value
         setFilterBy(selectedKeyword)
     })
 }
@@ -163,12 +164,12 @@ function onEditSavedMeme(index) {
 }
 
 function getDisplayedKeywords() {
-    var displayedKeywords = []
+    const displayedKeywords = []
 
-    var elFilterArticles = document.querySelectorAll('.image-filter article')
+    const elFilterArticles = document.querySelectorAll('.image-filter article')
 
     elFilterArticles.forEach(article => {
-        var keyword = article.textContent.toLowerCase()
+        const keyword = article.textContent.toLowerCase()
         displayedKeywords.push(keyword)
     })
 
