@@ -15,12 +15,18 @@
 }
 
 .gallery-section input {
+    display: block;
     padding-block: 12px;
     padding-inline-start: 30px;
     font-family: poppinsLight, sans-serif;
     font-size: 1rem;
     color: var(--clrInputFont);
     background: var(--clrPrimaryBase);
+}
+
+.gallery-section .img-data-list {
+    position: absolute;
+    width: 100%;
 }
 
 .gallery-section .img-filter {
@@ -49,25 +55,6 @@
     color: var(--clrHeaderFont);
     background: var(--clrSecondary);
     cursor: pointer;
-}
-
-.gallery-section .img-selection>* {
-    cursor: pointer;
-    justify-self: center;
-}
-
-.gallery-section .img-selection {
-    display: grid;
-    gap: 10px;
-}
-
-.gallery-section .img-selection button {
-    grid-column: 1 / 3;
-    align-self: center;
-}
-
-.gallery-section .img-selection input {
-    grid-row: 2;
 }
 
 .gallery-section .imgs-container {
@@ -113,13 +100,14 @@
     line-height: 100px;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 780px) {
     .gallery-section {
         margin-block: 15px;
     }
 
     .gallery-section .imgs-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
     }
 
     .gallery-section .search-section {

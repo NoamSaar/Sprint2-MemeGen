@@ -121,9 +121,8 @@
 
         <section class="gallery-section">
             <div class="search-section grid align-center">
-                <input oninput="onInputFilter(this.value)" type="search" class="search-input" list="img-list" placeholder="Search...">
-                
-                <datalist class="img-data-list"></datalist>
+                <input oninput="onInputFilter(this.value)" type="search" id="img-search" class="search-input" list="img-data" placeholder="Search...">
+                <datalist id="img-data" class="img-data-list"></datalist>
 
                 <div class="img-filter grid column">
                     <article class="filter-all" onclick="onFilterByCategory('tv'); onFilterClick(this, 'tv')">TV</article>
