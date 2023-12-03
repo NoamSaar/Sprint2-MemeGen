@@ -2,7 +2,6 @@
 
 let gElCanvas
 let gCtx
-
 let gCurrDisplay = 'editor'
 
 function onInit() {
