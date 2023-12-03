@@ -121,7 +121,7 @@ function onInputFilter(value) {
 }
 
 function onImgSelect(imgId) {
-    renderImg(imgId)
+    setImg(imgId)
     renderMeme()
     onChangeToSection('editor')
 }
@@ -137,6 +137,7 @@ function onSaveToMemeSection() {
     meme.url = gElCanvas.toDataURL()
     saveMeme(meme)
     renderSavedMemes()
+    flashMsg('Meme Saved!')
 }
 
 function onEditSavedMeme(index) {
@@ -161,20 +162,30 @@ function getDisplayedKeywords() {
     return displayedKeywords
 }
 
+function flashMsg(msg) {
+    const elUserMsg = document.querySelector('.user-msg')
+
+    elUserMsg.innerText = msg
+    elUserMsg.classList.add('open')
+
+    setTimeout(() => elUserMsg.classList.remove('open'), 3000)
+}
+
+
 // LOAD USER IMG
 function onChangeImgInput(ev) {
     loadImgFromInput(ev, renderImg)
     onChangeToSection('editor')
 }
 
-function loadImgFromInput(ev, onimgReady) {
+function loadImgFromInput(ev, onImageReady) {
     const reader = new FileReader()
     reader.onload = function (event) {
-        let img = new img()
+        let img = new Image()
         img.src = event.target.result
         img.onload = () => {
-            renderImg(addNewImg(img))
-            onimgReady(img)
+            setImg(addNewImg(img))
+            onImageReady(img)
             onSelectImg(img)
             renderGallery()
         }
@@ -196,7 +207,7 @@ function onSelectImg(elImg) {
 
 function coverCanvasWithImg(elImg) {
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
-    gCtx.drawimg(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
 // LINE DRAG HANDLING

@@ -167,6 +167,26 @@
     box-shadow: 0 3px 0 0 #7c1d0a, inset #c691877c -1px 3.5px 0 0;
 }
 
+.editor-section .user-msg {
+    
+    position: fixed;
+    bottom: -100px;
+    right: 10px;
+
+    background-color: var(--clrPrimary1);
+    border-radius: 25px;    
+    
+    font-family: poppinsRegular, sans-serif;
+    color: white;
+
+    padding: 10px;
+    transition: bottom 0.5s;
+}
+
+.editor-section .user-msg.open {
+    bottom: 10px;
+}
+
 
 @media (max-width: 920px) {
     .editor-section {

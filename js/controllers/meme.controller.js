@@ -1,6 +1,6 @@
 'use strict'
 
-let isDrawingImg = false
+let gIsDrawingImg = false
 
 function renderMeme() {
     const meme = getMeme()
@@ -18,11 +18,11 @@ function renderTxtInput() {
 }
 
 function drawImg(imgId) {
-    if (isDrawingImg) {
+    if (gIsDrawingImg) {
         return
     }
 
-    isDrawingImg = true
+    gIsDrawingImg = true
 
     const elImg = new Image()
     const imgs = getImgs()
@@ -32,7 +32,7 @@ function drawImg(imgId) {
     
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
-        isDrawingImg = false
+        gIsDrawingImg = false
     }
 }
 
@@ -158,6 +158,7 @@ function setColor(color, type) {
         onSetStrokeColor(color)
     }
 }
+
 
 // SHARE AND DOWNLOAD IMG
 function onDownloadCanvas(elLink) {

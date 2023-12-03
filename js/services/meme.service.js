@@ -95,7 +95,7 @@ function switchLine() {
 function deleteLine() {
     const lines = _getLinesFromModel()
 
-    if (lines.length <= 1) return
+    if (!lines) return
 
     lines.splice(gSelectedLineIdx, 1)
 
