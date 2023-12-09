@@ -1,7 +1,7 @@
 .editor-section {
-    display: grid;
-    /* grid-template-rows: 1fr 2.5rem 1fr; */
+    display: none;
     margin-block: 30px;
+    overflow-x: hidden;
 }
 
 .editor-section .canvas-container {
@@ -196,6 +196,7 @@
 @media (max-width: 920px) {
     .editor-section {
         grid-template-rows: 1fr 2.5rem 1fr;
+        overflow-x: hidden;
     }
 }
 

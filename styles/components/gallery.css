@@ -1,8 +1,9 @@
 .gallery-section {
-    display: none;
+    display: grid;
     background-color: var(--clrPrimary1);
     border-radius: 10px;
     margin-block-end: 20px;
+    overflow-x: hidden;
 }
 
 .gallery-section>* {
@@ -94,7 +95,7 @@
 }
 
 .gallery-section .file-input-label {
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -106,8 +107,10 @@
 }
 
 @media (max-width: 780px) {
+    
     .gallery-section {
         margin-block: 15px;
+        overflow-x: hidden;
     }
 
     .gallery-section .imgs-container {

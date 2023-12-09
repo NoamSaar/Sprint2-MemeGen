@@ -14,6 +14,7 @@ header>* {
 header .logo {
     font-size: 2rem;
     margin-inline-start: 20px;
+    cursor: pointer;
 }
 
 header .main-nav-list {

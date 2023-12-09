@@ -5,6 +5,7 @@ let gIsDrawingImg = false
 function renderMeme() {
     const meme = getMeme()
     drawImg(meme.selectedImgId)
+    document.querySelector('input[type="text"]').focus()
 }
 
 function renderTxtInput() {
@@ -15,6 +16,7 @@ function renderTxtInput() {
     const currTxt = lines[currLine].txt
 
     elTxtInput.value = currTxt
+    elTxtInput.focus()
 }
 
 function drawImg(imgId) {
@@ -29,7 +31,7 @@ function drawImg(imgId) {
     const { url } = imgs[imgId - 1]
 
     elImg.src = url
-    
+
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
         gIsDrawingImg = false
@@ -66,7 +68,7 @@ function drawText(text, size, x, y) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = getStrokeColor()
     gCtx.fillStyle = getFillColor()
-    gCtx.font = `${size}px ${fontFamily}` 
+    gCtx.font = `${size}px ${fontFamily}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
@@ -77,7 +79,7 @@ function onAddNewLine() {
     const meme = getMeme()
     const currLineIdx = meme.lines.length
 
-    var newYPlacement 
+    var newYPlacement
     var newXPlacement = gElCanvas.width / 2
 
     if (currLineIdx === 0) {
@@ -88,7 +90,7 @@ function onAddNewLine() {
         newYPlacement = gElCanvas.height / 2
     }
 
-    addNewLine( { x: newXPlacement, y: newYPlacement})
+    addNewLine({ x: newXPlacement, y: newYPlacement })
     renderMeme()
     renderTxtInput()
 }
@@ -144,7 +146,7 @@ function onOpenColorPicker(type) {
     const colorPicker = document.createElement('input')
     colorPicker.type = 'color'
 
-    colorPicker.addEventListener('input', function() {
+    colorPicker.addEventListener('input', function () {
         setColor(colorPicker.value, type)
     })
 
@@ -165,7 +167,7 @@ function onDownloadCanvas(elLink) {
     const originalStrokeStyle = gCtx.strokeStyle
     gCtx.strokeStyle = 'transparent'
     renderMeme('transparent')
-    
+
     const dataUrl = gElCanvas.toDataURL()
 
     gCtx.strokeStyle = originalStrokeStyle
@@ -176,13 +178,13 @@ function onDownloadCanvas(elLink) {
 }
 
 function onUploadImg() {
-    const imgDataUrl = gElCanvas.toDataURL('image/jpeg') 
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
 
     function onSuccess(uploadedImgUrl) {
         const url = encodeURIComponent(uploadedImgUrl)
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
     }
-    
+
     doUploadImg(imgDataUrl, onSuccess)
 }
 
@@ -195,7 +197,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
         if (XHR.readyState !== XMLHttpRequest.DONE) return
         if (XHR.status !== 200) return console.error('Error uploading image')
         const { responseText: url } = XHR
-        
+
         console.log('Got back live url:', url)
         onSuccess(url)
     }

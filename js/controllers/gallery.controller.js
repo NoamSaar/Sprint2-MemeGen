@@ -342,16 +342,3 @@ function addTouchListeners() {
     gElCanvas.addEventListener('touchmove', onMove, { passive: true })
     gElCanvas.addEventListener('touchend', onUp, { passive: true })
 }
-
-
-// function updateKeywordsList() {
-//     const datalist = document.getElementById('keywords')
-//     const uniqueKeywords = getUniqueKeywords(gImgs)
-
-//     datalist.innerHTML = ''
-//     uniqueKeywords.forEach(keyword => {
-//         const option = document.createElement('option')
-//         option.value = keyword
-//         datalist.appendChild(option)
-//     })
-// }

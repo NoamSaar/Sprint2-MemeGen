@@ -22,6 +22,7 @@ function onInit() {
     renderMeme()
     renderTxtInput()
 
+
     window.addEventListener('resize', () => {
         resizeCanvas()
         gMeme.lines.forEach((line, idx) => {
